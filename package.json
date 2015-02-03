@@ -1,0 +1,33 @@
+{
+  "name": "chrome-manifest",
+  "version": "0.0.0",
+  "description": "The best module ever.",
+
+  "author": {
+    "name": "ragingwind",
+    "email": "ragingwind@gmail.com"
+  },
+  "repository": "ragingwind/chrome-manifest",
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "cli.js"
+  ],
+  "keywords": [
+    "chrome-manifest",
+    "chrome",
+    "chrome apps",
+    "chrome extension"
+  ],
+  "dependencies": {
+    "meow": "^2.0.0"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "bin": {
+    "chrome-manifest": "index.js"
+  }
+}
