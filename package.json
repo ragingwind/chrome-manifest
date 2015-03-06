@@ -9,8 +9,7 @@
   "repository": "ragingwind/chrome-manifest",
   "license": "MIT",
   "files": [
-    "index.js",
-    "cli.js"
+    "index.js"
   ],
   "keywords": [
     "chrome manifest",
@@ -19,13 +18,11 @@
     "chrome extension"
   ],
   "dependencies": {
+    "dot-prop": "^1.0.1",
     "meow": "^2.0.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "mocha"
-  },
-  "bin": {
-    "chrome-manifest": "index.js"
   }
 }

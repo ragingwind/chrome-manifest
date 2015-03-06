@@ -1,6 +1,6 @@
 #  [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image]
 
-> Help you to manage manifest for developing Chrome Apps and Extensions
+> Help you to manage manifest when you are developing Chrome Apps and Extensions
 
 
 ## Install
@@ -13,7 +13,39 @@ $ npm install --save chrome-manifest
 ## Usage
 
 ```js
-var chrome-manifest = require('chrome-manifest');
+var Manifest = require('chrome-manifest');
+var manifest = new Manifest('manifest.json');
+
+// exclude value or key what you want
+manifest.exclude([
+  {
+    'content_scripts.[0].matches': [
+      "http://*/*"
+    ]
+  },
+  {
+    'background.scripts': [
+      'scripts/willbe-remove-only-for-debug.js',
+      'scripts/user-script.js'
+    ]
+  },
+  'manifest_version',
+  'key'
+]);
+
+// Save manifest with updated content
+manifest.save('manifest.copy.json');
+
+// patch version from 0.0.1 to 0.0.2
+manifest.patch();
+
+// Get various types
+console.log(manifest.toJSON());
+console.log(manifest.toBuffer());
+console.log(manifest.toString());
+
+// Get value with dot expression and array expression
+console.log(manifest.get('background.scripts.[0]'));
 ```
 
 ```sh
