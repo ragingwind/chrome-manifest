@@ -1,8 +1,7 @@
 {
   "name": "chrome-manifest",
   "version": "0.0.0",
-  "description": "The best module ever.",
-
+  "description": "Help you to manage manifest for developing Chrome Apps and Extensions",
   "author": {
     "name": "ragingwind",
     "email": "ragingwind@gmail.com"
@@ -14,7 +13,7 @@
     "cli.js"
   ],
   "keywords": [
-    "chrome-manifest",
+    "chrome manifest",
     "chrome",
     "chrome apps",
     "chrome extension"

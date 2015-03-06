@@ -23,7 +23,7 @@ $ chrome-manifest --help
 
 ## License
 
-MIT © [ragingwind](http://github.com/ragingwind)
+MIT ©[Jommy Moon](http://ragingwind.me)
 
 
 [npm-url]: https://npmjs.org/package/chrome-manifest
