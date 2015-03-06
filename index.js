@@ -1,7 +1,6 @@
 'use strict';
 
 var fs = require('fs');
-var dotProp = require('dot-prop');
 var _ = require('lodash');
 
 function props(obj, exp) {

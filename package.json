@@ -18,8 +18,7 @@
     "chrome extension"
   ],
   "dependencies": {
-    "dot-prop": "^1.0.1",
-    "meow": "^2.0.0"
+    "lodash": "^3.4.0"
   },
   "devDependencies": {},
   "scripts": {
