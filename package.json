@@ -1,6 +1,6 @@
 {
   "name": "chrome-manifest",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Help you to manage manifest for developing Chrome Apps and Extensions",
   "author": {
     "name": "ragingwind",
@@ -21,8 +21,7 @@
   "dependencies": {
     "meow": "^2.0.0"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "scripts": {
     "test": "mocha"
   },
