@@ -39,7 +39,7 @@ function Manifest(opts) {
 Manifest.prototype.load = function(json) {
   if (typeof json === 'string') {
     this._manifest = JSON.parse(fs.readFileSync(json));
-  } else if (typeof json === 'string') {
+  } else if (typeof json === 'object') {
     this._manifest = json
   }
 
