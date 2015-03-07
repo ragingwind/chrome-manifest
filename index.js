@@ -39,7 +39,7 @@ function version(numbers, index) {
 
 function Manifest(opts) {
   opts = opts || {};
-  this._manifest = {};
+  this.manifest = {};
 	if (opts.path) {
 		this.load(opts.path);
 	}
@@ -47,9 +47,9 @@ function Manifest(opts) {
 
 Manifest.prototype.load = function(json) {
   if (typeof json === 'string') {
-    this._manifest = JSON.parse(fs.readFileSync(json));
+    this.manifest = JSON.parse(fs.readFileSync(json));
   } else if (typeof json === 'object') {
-    this._manifest = json
+    this.manifest = json
   }
 
   return this;
@@ -61,7 +61,7 @@ Manifest.prototype.save = function(path) {
 }
 
 Manifest.prototype.toJSON = function() {
-  return this._manifest;
+  return this.manifest;
 }
 
 Manifest.prototype.toBuffer = function() {
@@ -74,15 +74,15 @@ Manifest.prototype.toString = function() {
 
 Manifest.prototype.get = function(key) {
   if (key) {
-    var prop = props(this._manifest, key);
+    var prop = props(this.manifest, key);
     return prop[pickKey(key)];
   } else {
-    return this._manifest;
+    return this.manifest;
   }
 }
 
 Manifest.prototype.set = function(key, val) {
-  var manifest = this._manifest;
+  var manifest = this.manifest;
   var prop = props(manifest, key);
   if (prop) {
     prop[pickKey(key)] = val;
@@ -90,7 +90,7 @@ Manifest.prototype.set = function(key, val) {
 }
 
 Manifest.prototype.exclude = function(targets) {
-  var manifest = this._manifest;
+  var manifest = this.manifest;
   targets = _.toArray(targets);
   targets.forEach(function(target) {
     var type = typeof target;
@@ -120,11 +120,11 @@ Manifest.prototype.exclude = function(targets) {
 
 Manifest.prototype.patch = function(patchVersion) {
   if (!patchVersion) {
-    var buildnumber = this._manifest.version.split('.');
-    this._manifest.version = version(buildnumber, buildnumber.length - 1);
+    var buildnumber = this.manifest.version.split('.');
+    this.manifest.version = version(buildnumber, buildnumber.length - 1);
   } else if (typeof patchVersion === 'string' &&
     (/^\d+(\.\d+){0,3}$/).test(patchVersion)) {
-    this._manifest.version = patchVersion;
+    this.manifest.version = patchVersion;
   }
 }
 
