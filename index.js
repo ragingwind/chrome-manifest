@@ -3,15 +3,24 @@
 var fs = require('fs');
 var _ = require('lodash');
 
-function props(obj, exp) {
+function toKey(key) {
+  return /\[[0-9]\]/.test(key) ? parseInt(/\[([0-9])\]/.exec(key)[1]) : key;
+}
+
+function pickKey(exp) {
+  exp = exp.split('.');
+  return toKey(exp.pop());
+}
+
+function props(obj, exp, v) {
+  var prop = null;
   function travelProps(obj, exp) {
     if (typeof obj !== 'object' || !obj || exp.length === 0) {
-      return obj;
+      return prop;
+    } else {
+      prop = obj;
     }
-
-    var key = /\[[0-9]\]/.test(exp[0]) ? new Number(/\[([0-9])\]/.exec(exp[0])[1]) : exp[0];
-
-    return travelProps(obj[key], exp.slice(1));
+    return travelProps(obj[toKey(exp[0])], exp.slice(1));
   }
   return travelProps(obj, exp.split('.'));
 }
@@ -64,7 +73,20 @@ Manifest.prototype.toString = function() {
 }
 
 Manifest.prototype.get = function(key) {
-  return key ? props(this._manifest, key) : this._manifest;
+  if (key) {
+    var prop = props(this._manifest, key);
+    return prop[pickKey(key)];
+  } else {
+    return this._manifest;
+  }
+}
+
+Manifest.prototype.set = function(key, val) {
+  var manifest = this._manifest;
+  var prop = props(manifest, key);
+  if (prop) {
+    prop[pickKey(key)] = val;
+  }
 }
 
 Manifest.prototype.exclude = function(targets) {
@@ -84,16 +106,16 @@ Manifest.prototype.exclude = function(targets) {
       var key = _.keys(target)[0];
       var prop = props(manifest, key);
       var val = _.toArray(target[key]);
-
       if (prop) {
-        prop = _.remove(prop, function(pv) {
-          return _.indexOf(val, pv) >= 0;
+        key = pickKey(key);
+        prop[key] = _.remove(prop[key], function(pv) {
+          return _.indexOf(val, pv) === -1;
         });
       }
     } else {
       throw new Error('Not supported type: ' + type)
     }
-  }.bind(this));
+  });
 }
 
 Manifest.prototype.patch = function(patchVersion) {

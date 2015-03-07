@@ -34,7 +34,7 @@ describe('chrome-manifest node module', function () {
     manifest.get('content_scripts.[1]').matches.push('http://*.google.com');
     assert.equal(manifest.get('content_scripts.[1].matches.[2]'), 'http://*.google.com');
 
-    // Remove some of background scripts, manifest_version and key
+    // // Remove some of background scripts, manifest_version and key
     manifest.exclude([
       {
         'content_scripts.[0].matches': [
@@ -58,7 +58,7 @@ describe('chrome-manifest node module', function () {
     assert.equal(manifest.get('manifest_version'), undefined);
     assert.equal(manifest.get('key'), undefined);
 
-    // Patch the version
+    // // Patch the version
     for (var i = 0; i < 10; ++i) {
       manifest.patch();
     }
@@ -66,5 +66,27 @@ describe('chrome-manifest node module', function () {
 
     manifest.patch('1.1.1');
     assert.equal(manifest.get('version'), '1.1.1');
+  });
+
+  it('should return overwritten value', function () {
+    var manifest = new Manifest({
+      path: 'test/fixtures/manifest.json'
+    });
+    var savedManifest = null;
+
+    // Add new uri second content script
+    // manifest.set('name', 'New Chrome Apps');
+    // assert.equal(manifest.get('name'), 'New Chrome Apps');
+
+    // Add new uri second content script
+    manifest.set('background.scripts', ['background.js']);
+    console.log("manifest.get('background.scripts')", manifest.get('background.scripts'));
+    assert.equal(manifest.get('background.scripts')[0], 'background.js');
+    assert.equal(manifest.get('background.scripts').length, 1);
+
+    // It's not gonna work
+    var version = manifest.get('version');
+    version = '1.2.2';
+    assert.equal(manifest.get('version'), '0.0.1');
   });
 });
