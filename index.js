@@ -29,6 +29,7 @@ function version(numbers, index) {
 };
 
 function Manifest(opts) {
+  opts = opts || {};
   this._manifest = {};
 	if (opts.path) {
 		this.load(opts.path);
