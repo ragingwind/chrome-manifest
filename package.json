@@ -1,6 +1,6 @@
 {
   "name": "chrome-manifest",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Help you to manage manifest for developing Chrome Apps and Extensions",
   "author": {
     "name": "ragingwind",
