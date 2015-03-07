@@ -33,6 +33,14 @@ manifest.exclude([
   'key'
 ]);
 
+// get/set
+manifest.prop('content_scripts.[0].matches').length;
+manifest.prop('background.scripts');
+manifest.val('content_scripts.[0].matches.[0]');
+manifest.manifest.background.scripts[1];
+manifest.prop('manifest_version');
+manifest.manifest['key'];
+
 // Save manifest with updated content
 manifest.save('manifest.copy.json');
 

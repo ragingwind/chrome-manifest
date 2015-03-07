@@ -12,7 +12,18 @@ function pickKey(exp) {
   return toKey(exp.pop());
 }
 
-function props(obj, exp, v) {
+function getPropVal(obj, exp) {
+  function travelProps(obj, exp) {
+    if (typeof obj !== 'object' || !obj || exp.length === 0) {
+      return obj;
+    }
+    return travelProps(obj[toKey(exp[0])], exp.slice(1));
+  }
+  return travelProps(obj, exp.split('.'));
+}
+
+
+function getProp(obj, exp) {
   var prop = null;
   function travelProps(obj, exp) {
     if (typeof obj !== 'object' || !obj || exp.length === 0) {
@@ -72,18 +83,26 @@ Manifest.prototype.toString = function() {
   return JSON.stringify(this, 0, '\t');
 }
 
-Manifest.prototype.get = function(key) {
+Manifest.prototype.prop = function(key) {
   if (key) {
-    var prop = props(this.manifest, key);
+    var prop = getProp(this.manifest, key);
     return prop[pickKey(key)];
   } else {
     return this.manifest;
   }
 }
 
+Manifest.prototype.val = function(key) {
+  if (key) {
+    return getPropVal(this.manifest, key);
+  } else {
+    return this.manifest;
+  } 
+};
+
 Manifest.prototype.set = function(key, val) {
   var manifest = this.manifest;
-  var prop = props(manifest, key);
+  var prop = getProp(manifest, key);
   if (prop) {
     prop[pickKey(key)] = val;
   }
@@ -104,7 +123,7 @@ Manifest.prototype.exclude = function(targets) {
       }
     } else if (type === 'object') {
       var key = _.keys(target)[0];
-      var prop = props(manifest, key);
+      var prop = getProp(manifest, key);
       var val = _.toArray(target[key]);
       if (prop) {
         key = pickKey(key);

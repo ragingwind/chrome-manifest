@@ -31,8 +31,8 @@ describe('chrome-manifest node module', function () {
     var savedManifest = null;
 
     // Add new uri second content script
-    manifest.get('content_scripts.[1]').matches.push('http://*.google.com');
-    assert.equal(manifest.get('content_scripts.[1].matches.[2]'), 'http://*.google.com');
+    manifest.prop('content_scripts.[1]').matches.push('http://*.google.com');
+    assert.equal(manifest.prop('content_scripts.[1].matches.[2]'), 'http://*.google.com');
 
     // // Remove some of background scripts, manifest_version and key
     manifest.exclude([
@@ -51,21 +51,21 @@ describe('chrome-manifest node module', function () {
       'key'
     ]);
 
-    assert.equal(manifest.get('content_scripts.[0].matches').length, 1);
-    assert.equal(manifest.manifest.content_scripts[0].matches[0], 'https://*/*');
-    assert.equal(manifest.get('background.scripts').length, 2);
+    assert.equal(manifest.prop('content_scripts.[0].matches').length, 1);
+    assert.equal(manifest.val('content_scripts.[0].matches.[0]'), 'https://*/*');
+    assert.equal(manifest.prop('background.scripts').length, 2);
     assert.equal(manifest.manifest.background.scripts[1], 'scripts/background.js');
-    assert.equal(manifest.get('manifest_version'), undefined);
+    assert.equal(manifest.prop('manifest_version'), undefined);
     assert.equal(manifest.manifest['key'], undefined);
 
     // // Patch the version
     for (var i = 0; i < 10; ++i) {
       manifest.patch();
     }
-    assert.equal(manifest.get('version'), '0.0.11');
+    assert.equal(manifest.prop('version'), '0.0.11');
 
     manifest.patch('1.1.1');
-    assert.equal(manifest.get('version'), '1.1.1');
+    assert.equal(manifest.prop('version'), '1.1.1');
   });
 
   it('should return overwritten value', function () {
@@ -76,16 +76,16 @@ describe('chrome-manifest node module', function () {
 
     // Add new uri second content script
     manifest.set('name', 'New Chrome Apps');
-    assert.equal(manifest.get('name'), 'New Chrome Apps');
+    assert.equal(manifest.prop('name'), 'New Chrome Apps');
 
     // Add new uri second content script
     manifest.set('background.scripts', ['background.js']);
-    assert.equal(manifest.get('background.scripts')[0], 'background.js');
-    assert.equal(manifest.get('background.scripts').length, 1);
+    assert.equal(manifest.prop('background.scripts')[0], 'background.js');
+    assert.equal(manifest.prop('background.scripts').length, 1);
 
     // It's not gonna work
-    var version = manifest.get('version');
+    var version = manifest.prop('version');
     version = '1.2.2';
-    assert.equal(manifest.get('version'), '0.0.1');
+    assert.equal(manifest.prop('version'), '0.0.1');
   });
 });
