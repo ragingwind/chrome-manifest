@@ -97,7 +97,7 @@ Manifest.prototype.val = function(key) {
     return getPropVal(this.manifest, key);
   } else {
     return this.manifest;
-  } 
+  }
 };
 
 Manifest.prototype.set = function(key, val) {
