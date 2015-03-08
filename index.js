@@ -26,7 +26,7 @@ function getPropVal(obj, exp) {
 function getProp(obj, exp) {
   var prop = null;
   function travelProps(obj, exp) {
-    if (typeof obj !== 'object' || !obj || exp.length === 0) {
+    if (typeof obj !== 'object' || !obj || exp.length === 0 || !obj[toKey(exp[0])]) {
       return prop;
     } else {
       prop = obj;
@@ -86,7 +86,7 @@ Manifest.prototype.toString = function() {
 Manifest.prototype.prop = function(key) {
   if (key) {
     var prop = getProp(this.manifest, key);
-    return prop[pickKey(key)];
+    return prop ? prop[pickKey(key)] : null;
   } else {
     return this.manifest;
   }
