@@ -44,35 +44,20 @@
       "legacy_packaged_app"
     ]
   },
-  "bluetooth": [
-    {
-      "channel": "stable",
-      "extension_types": [
-        "platform_app"
-      ],
-      "platforms": [
-        "chromeos",
-        "win",
-        "mac"
-      ]
-    },
-    {
-      "channel": "stable",
-      "extension_types": [
-        "platform_app"
-      ],
-      "platforms": [
-        "linux"
-      ],
-      "whitelist": [
-        "9E287A8257E58EFB13E89C86A4B75A3AC4B058D8",
-        "1C93BD3CF875F4A73C0B2A163BB8FBDA8B8B3D80",
-        "A3BC37E2148AC4E99BE4B16AF9D42DD1E592BBBE",
-        "E703483CEF33DEC18B4B6DD84B5C776FB9182BDB",
-        "307E96539209F95A1A8740C713E6998A73657D96"
-      ]
-    }
-  ],
+  "bluetooth": {
+    "channel": [
+      "stable"
+    ],
+    "extension_types": [
+      "platform_app"
+    ],
+    "platforms": [
+      "chromeos",
+      "win",
+      "mac",
+      "linux"
+    ]
+  },
   "browser_action": {
     "channel": "stable",
     "extension_types": [
@@ -88,26 +73,14 @@
       "win"
     ]
   },
-  "chrome_ui_overrides": [
-    {
-      "channel": "dev",
-      "extension_types": [
-        "extension"
-      ]
-    },
-    {
-      "channel": "stable",
-      "extension_types": [
-        "extension"
-      ],
-      "whitelist": [
-        "CB2E4E7174A398FCB3AFA6840500C2E1D22DA7B2",
-        "D5736E4B5CF695CB93A2FB57E4FDC6E5AFAB6FE2",
-        "D57DE394F36DC1C3220E7604C575D29C51A6C495",
-        "3F65507A3B39259B38C8173C6FFA3D12DF64CCE9"
-      ]
-    }
-  ],
+  "chrome_ui_overrides": {
+    "channel": [
+      "dev"
+    ],
+    "extension_types": [
+      "extension"
+    ]
+  },
   "chrome_url_overrides": {
     "channel": "stable",
     "extension_types": [
@@ -164,70 +137,36 @@
       "legacy_packaged_app"
     ]
   },
-  "display_in_launcher": [
-    {
-      "channel": "stable",
-      "extension_types": [
-        "legacy_packaged_app",
-        "platform_app",
-        "hosted_app"
-      ],
-      "location": "component"
-    },
-    {
-      "channel": "stable",
-      "extension_types": [
-        "legacy_packaged_app",
-        "platform_app"
-      ],
-      "whitelist": [
-        "nmmhkkegccagdldgiimedpiccmgmieda"
-      ]
-    }
-  ],
-  "display_in_new_tab_page": [
-    {
-      "channel": "stable",
-      "extension_types": [
-        "legacy_packaged_app",
-        "platform_app",
-        "hosted_app"
-      ],
-      "location": "component"
-    },
-    {
-      "channel": "stable",
-      "extension_types": [
-        "legacy_packaged_app",
-        "platform_app"
-      ],
-      "whitelist": [
-        "nmmhkkegccagdldgiimedpiccmgmieda"
-      ]
-    }
-  ],
-  "export": [
-    {
-      "channel": "stable",
-      "extension_types": [
-        "shared_module"
-      ],
-      "whitelist": [
-        "6EAED1924DB611B6EEF2A664BD077BE7EAD33B8F",
-        "4EB74897CB187C7633357C2FE832E0AD6A44883A",
-        "mafeflapfdfljijmlienjedomfjfmhpd",
-        "ajchadodoajkaojdidnbblnfcdipbple",
-        "47F838F58D2A3B585DE50F29E3585D94999921D1",
-        "8EBAFB8DEB647EA2FC887A5E01EBD9BDC0FDC536"
-      ]
-    },
-    {
-      "channel": "dev",
-      "extension_types": [
-        "shared_module"
-      ]
-    }
-  ],
+  "display_in_launcher": {
+    "channel": [
+      "stable"
+    ],
+    "extension_types": [
+      "legacy_packaged_app",
+      "platform_app",
+      "hosted_app"
+    ],
+    "location": "component"
+  },
+  "display_in_new_tab_page": {
+    "channel": [
+      "stable"
+    ],
+    "extension_types": [
+      "legacy_packaged_app",
+      "platform_app",
+      "hosted_app"
+    ],
+    "location": "component"
+  },
+  "export": {
+    "channel": [
+      "stable"
+    ],
+    "extension_types": [
+      "shared_module"
+    ]
+  },
   "externally_connectable": {
     "channel": "stable",
     "extension_types": [
@@ -237,41 +176,26 @@
       "platform_app"
     ]
   },
-  "file_browser_handlers": [
-    {
-      "channel": "stable",
-      "extension_types": [
-        "extension",
-        "legacy_packaged_app"
-      ]
-    },
-    {
-      "channel": "stable",
-      "extension_types": [
-        "platform_app"
-      ],
-      "location": "component"
-    }
-  ],
-  "file_handlers": [
-    {
-      "channel": "stable",
-      "extension_types": [
-        "platform_app"
-      ]
-    },
-    {
-      "channel": "stable",
-      "extension_types": [
-        "extension"
-      ],
-      "whitelist": [
-        "2FC374607C2DF285634B67C64A2E356C607091C3",
-        "3727DD3E564B6055387425027AD74C58784ACC15",
-        "12E618C3C6E97495AAECF2AC12DEB082353241C6"
-      ]
-    }
-  ],
+  "file_browser_handlers": {
+    "channel": [
+      "stable"
+    ],
+    "extension_types": [
+      "extension",
+      "legacy_packaged_app",
+      "platform_app"
+    ],
+    "location": []
+  },
+  "file_handlers": {
+    "channel": [
+      "stable"
+    ],
+    "extension_types": [
+      "platform_app",
+      "extension"
+    ]
+  },
   "homepage_url": {
     "channel": "stable",
     "extension_types": [
@@ -303,11 +227,6 @@
     "min_manifest_version": 2,
     "extension_types": [
       "platform_app"
-    ],
-    "whitelist": [
-      "07BD6A765FFC289FF755D7CAB2893A40EC337FEC",
-      "896B85CC7E913E11C34892C1425A093C0701D386",
-      "11A01C82EF355E674E4F9728A801F5C3CB40D83F"
     ]
   },
   "manifest_version": {
@@ -320,14 +239,6 @@
       "extension",
       "legacy_packaged_app",
       "platform_app"
-    ],
-    "whitelist": [
-      "oickdpebdnfbgkcaoklfcdhjniefkcji",
-      "gbkeegbaiigmenfmjfclcdgdpimamgkj",
-      "ionpfmkccalenbmnddpbmocokhaknphg",
-      "bpmcpldpdmajfigpchkicefoigmkfalc",
-      "ehibbfinohgbchlgdbfpikodjaojhccn",
-      "mhjfbmdgcfjbbpaeojofohoefgiehjai"
     ]
   },
   "mime_types_handler": {
@@ -336,14 +247,6 @@
       "extension",
       "legacy_packaged_app",
       "platform_app"
-    ],
-    "whitelist": [
-      "oickdpebdnfbgkcaoklfcdhjniefkcji",
-      "gbkeegbaiigmenfmjfclcdgdpimamgkj",
-      "ionpfmkccalenbmnddpbmocokhaknphg",
-      "bpmcpldpdmajfigpchkicefoigmkfalc",
-      "ehibbfinohgbchlgdbfpikodjaojhccn",
-      "mhjfbmdgcfjbbpaeojofohoefgiehjai"
     ]
   },
   "minimum_chrome_version": {
@@ -381,17 +284,6 @@
     "extension_types": [
       "extension",
       "platform_app"
-    ],
-    "whitelist": [
-      "mdbihdcgjmagbcapkhhkjbbdlkflmbfo",
-      "pafkbggdmjlpgkdkcbjmhmfcdpncadgh",
-      "nmmhkkegccagdldgiimedpiccmgmieda",
-      "4B1D0E19C6C43C008C44A8278C8B5BFE15ABEB3C",
-      "F7FA7ABC1ECB89BA8EE6656847EFABBF43BB9BCA",
-      "1A26E32DE447A17CBE5E9750CDBA78F58539B39C",
-      "E61F841D8210B6A9891E5384CB665FBED31FCD7B",
-      "A8208CCC87F8261AFAEB6B85D5E8D47372DDEA6B",
-      "A4577D8C2AF4CF26F40CBCA83FFA4251D6F6C8F8"
     ]
   },
   "omnibox": {
@@ -490,31 +382,16 @@
     ],
     "min_manifest_version": 2
   },
-  "system_indicator": [
-    {
-      "channel": "dev",
-      "extension_types": [
-        "extension",
-        "legacy_packaged_app",
-        "platform_app"
-      ]
-    },
-    {
-      "channel": "stable",
-      "whitelist": [
-        "F29716B08705C9D3C12CDFE3F638BAE709570C31",
-        "53041A2FA309EECED01FFC751E7399186E860B2C",
-        "312745D9BF916161191143F6490085EEA0434997",
-        "A74A4D44C7CFCD8844830E6140C8D763E12DD8F3",
-        "E7E2461CE072DF036CF9592740196159E2D7C089",
-        "49DA0B9CCEEA299186C6E7226FD66922D57543DC"
-      ],
-      "extension_types": [
-        "extension",
-        "platform_app"
-      ]
-    }
-  ],
+  "system_indicator": {
+    "channel": [
+      "dev"
+    ],
+    "extension_types": [
+      "extension",
+      "legacy_packaged_app",
+      "platform_app"
+    ]
+  },
   "theme": {
     "channel": "stable",
     "extension_types": [

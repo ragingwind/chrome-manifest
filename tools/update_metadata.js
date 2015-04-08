@@ -5,8 +5,9 @@ var read = require('fs').readFileSync;
 var exist = require('fs').existsSync;
 var write = function(output, data) {
   console.log(path.basename(output), 'is writing');
-  require('fs').writeFileSync;
+  require('fs').writeFileSync(output, data);
 };
+var _ = require('lodash');
 var got = require('got');
 var q = require('q');
 var minify = require('node-json-minify');
@@ -48,8 +49,36 @@ function diff(src, dest) {
   return diff;
 }
 
+function filterJSON(data) {
+  var json = JSON.parse(minify(data));
+  var output = {};
+
+  _.each(json, function (prop, key) {
+    // To manage medadata simply, post processing if prop has array properties
+    if (_.isArray(prop)) {
+      // append merge function at end of args
+      prop.push(function(p1, p2) {
+        if (p1 !== undefined && !_.isArray(p1)) {
+          p1 = [p1];
+        }
+        return _.union(p1, p2);
+      });
+
+      prop = _.merge.apply(this, prop);
+    }
+
+    if (prop.whitelist) {
+      delete prop.whitelist;
+    }
+
+    output[key] = prop;
+  });
+
+  return output;
+}
+
 function writeJSON(f, data, done) {
-  var dest = JSON.stringify(JSON.parse(minify(data)), ' ', 2);
+  var dest = JSON.stringify(data, ' ', 2);
 
   if (exist(f.output)) {
     var src = read(f.output);
@@ -77,15 +106,25 @@ function writeJSON(f, data, done) {
   }
 }
 
+function getJSON(url, cb) {
+  if (!url) {
+    require('fs').readFile('./lib/metadata/manifest_features.json', function(err, data) {
+      cb(err, data.toString());
+    });
+  } else {
+    got(url, cb);
+  }
+}
+
 function updateJSON(f) {
   var defer = q.defer();
 
-  got(f.url, function(err, data, res) {
+  getJSON(f.url, function(err, data, res) {
     if (err) {
       return defer.reject(err);
     }
 
-    writeJSON(f, data, function () {
+    writeJSON(f, filterJSON(data), function () {
       defer.resolve();
     });
   });
