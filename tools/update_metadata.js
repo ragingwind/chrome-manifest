@@ -1,11 +1,12 @@
 #!/usr/bin/env node
 
 var path = require('path');
-var read = require('fs').readFileSync;
-var exist = require('fs').existsSync;
+var fs = require('fs');
+var read = fs.readFileSync;
+var exist = fs.existsSync;
 var write = function(output, data) {
   console.log(path.basename(output), 'is writing');
-  require('fs').writeFileSync(output, data);
+  fs.writeFileSync(output, data);
 };
 var _ = require('lodash');
 var got = require('got');
@@ -115,7 +116,7 @@ function writeJSON(f, data, done) {
 
 function getJSON(url, cb) {
   if (!url) {
-    require('fs').readFile('./lib/metadata/manifest_features.json', function(err, data) {
+    fs.readFile('./lib/metadata/manifest_features.json', function(err, data) {
       cb(err, data.toString());
     });
   } else {
