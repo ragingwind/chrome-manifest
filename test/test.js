@@ -1,5 +1,7 @@
 /*global describe, it */
+
 'use strict';
+
 var assert = require('assert');
 var fs = require('fs');
 var Manifest = require('../');
