@@ -1,0 +1,274 @@
+{
+  "manifestVersion": {
+    "manifest_version": 2
+  },
+  "version": {
+    "version": "0.0.0"
+  },
+  "icons": {
+    "icons": {
+      "16": "<%=icon16%>",
+      "48": "<%=icon48%>",
+      "128": "<%=icon128%>"
+    }
+  },
+  "browserAction": {
+    "browser_action": {
+      "default_icon": {
+         "19": "<%=icon19%>",
+         "38": "<%=icon38%>"
+       },
+       "default_title": "<%=defaultTitle%>",
+       "default_popup": "<%=defaultPopup%>"
+     }
+  },
+  "pageAction": {
+    "page_action": {
+      "default_icon": {
+        "19": "<%=icon19%>",
+        "38": "<%=icon38%>"
+      },
+      "default_title": "<%=defaultTitle%>",
+      "default_popup": "<%=defaultPopup%>"
+    }
+  },
+  "background": {
+    "background": {
+      "page": "background.html",
+      "scripts": ["background.js"],
+      "persistent": false
+    }
+  },
+  "chrome_settings_overrides": {
+    "chrome_settings_overrides": {
+      "homepage": "<%=settingHomepage%>",
+      "search_provider": {
+        "name": "name.__MSG_url_domain__",
+        "keyword": "keyword.__MSG_url_domain__",
+        "search_url": "http://www.__MSG_url_domain__/s?q={searchTerms}",
+        "favicon_url": "http://www.__MSG_url_domain__/favicon.ico",
+        "suggest_url": "http://www.__MSG_url_domain__/suggest?q={searchTerms}",
+        "instant_url": "http://www.__MSG_url_domain__/instant?q={searchTerms}",
+        "image_url": "http://www.__MSG_url_domain__/image?q={searchTerms}",
+        "search_url_post_params": "search_lang=__MSG_url_domain__",
+        "suggest_url_post_params": "suggest_lang=__MSG_url_domain__",
+        "instant_url_post_params": "instant_lang=__MSG_url_domain__",
+        "image_url_post_params": "image_lang=__MSG_url_domain__",
+        "alternate_urls": [
+          "http://alter1.__MSG_url_domain__/s?q={searchTerms}",
+          "http://alter2.__MSG_url_domain__/s?q={searchTerms}"
+        ],
+        "encoding": "UTF-8",
+        "is_default": true
+      },
+      "startup_pages": ["<%=settingStartupPage%>"]
+    },
+    "default_locale": "en"
+  },
+  "commands": {
+    "commands": {
+      "toggle-feature-x": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+Y",
+          "mac": "Command+Shift+Y"
+        },
+        "description": "Toggle feature foo"
+      },
+      "_execute_browser_action": {
+        "suggested_key": {
+          "windows": "Ctrl+Shift+Y",
+          "mac": "Command+Shift+Y",
+          "chromeos": "Ctrl+Shift+U",
+          "linux": "Ctrl+Shift+J"
+        }
+      },
+      "_execute_page_action": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+E",
+          "windows": "Alt+Shift+P",
+          "mac": "Alt+Shift+P"
+        }
+      }
+    }
+  },
+  "contentScripts": {
+    "content_scripts": [
+      {
+        "matches": ["http://*/*", "https://*/*"],
+        "js": ["<%=contentScript"],
+        "run_at": "document_end",
+        "all_frames": false
+      }
+    ],
+    "permissions": ["tabs", "http://*/*", "https://*/*"]
+  },
+  "contentSecurityPolicy": {
+    "content_security_policy": "<%=cspString%>"
+  },
+  "devtoolsPage": {
+    "minimum_chrome_version": "10.0",
+    "devtools_page": "devtools.html"
+  },
+  "externallyConnectable": {
+    "externally_connectable": {
+      "ids": ["<%=extConnAppID%>"],
+      "matches": ["<%=extConnMatches%>"],
+      "accepts_tls_channel_id": false
+    }
+  },
+  "fileBrowserHandlers": {
+    "file_browser_handlers": {
+      "id": "upload",
+      "default_title": "File browser",
+      "file_filters": [
+        "filesystem:*.*"
+      ]
+    },
+    "icon": {
+      "16": "<%=icon16%>"
+    },
+    "permissions": ["fileBrowserHandler"]
+  },
+  "homepageUrl": {
+    "homepage_url": "<%=homepageURL%>"
+  },
+  "import": {
+    "import": [{"id": "<%=importId%>"}]
+  },
+  "incognito": {
+    "incognito": "spanning"
+  },
+  "key": {
+    "key": "<%=key%>"
+  },
+  "minimum_chrome_version": {
+    "minimum_chrome_version": "<%=minimumChromeVersion%>"
+  },
+  "naclModules": {
+    "nacl_modules": [{
+      "path": "<%=naclPath%>",
+      "mime_type": "<%=naclMimeType%>"
+    }]
+  },
+  "oauth2": {
+    "client_id": "<%=oauth2ClientId%>",
+    "scopes": ["<%=oauth2Scope%>"]
+  },
+  "offline_enabled": {
+    "offline_enabled": false
+  },
+  "omnibox": {
+    "omnibox": {
+      "keyword": "<%=omniboxKeyword%>"
+    },
+    "icons": {
+      "16": "<%=icon16%>"
+    }
+  },
+  "optionalPermissions": {
+    "optional_permissions": ["tabs", "http://*.*"]
+  },
+  "optionsPage": {
+    "options_page": "<%=optionsPage%>"
+  },
+  "optionsUi": {
+    "options_ui": {
+      "page": "<%=optionsUIPage%>",
+      "chrome_style": true,
+    }
+  },
+  "permissions": [],
+  "plugins": {
+    "plugins": [{"path": "<%=pluginPath%>"}]
+  },
+  "requirements": {
+    "requirements": {
+      "3D": {
+        "features": ["webgl"]
+      },
+      "plugins": {
+        "npapi": true
+      }
+    }
+  },
+  "sandbox": {
+    "sandbox": {
+      "pages": ["<%=sandboxPage%>"]
+    }
+  },
+  "shortName": {
+    "short_name": "<%=shortName%>"
+  },
+  "signature": {
+    "signature": "<%=signature%>"
+  },
+  "spellcheck": {
+    "spellcheck": "<%=spellcheck%>"
+  },
+  "storage": {
+    "storage": {
+      "managed_schema": "<%=storageSchema%>"
+    }
+  },
+  "systemIndicator": {
+    "system_indicator": "<%=systemIndicator%>"
+  },
+  "sockets": {
+    "sockets": {
+      "udp": {
+        "send": ["*:*"],
+        "bind": ["*:*"]
+      },
+      "tcp" : {
+        "connect": ["*:*"]
+      },
+      "tcpServer" : {
+        "listen": [":8080"]
+      }
+    }
+  },
+  "ttsEngine": {
+    "tts_engine": {
+      "voices": [{
+        "voice_name": "Alice",
+        "lang": "en-US",
+        "gender": "female",
+        "event_types": ["start", "marker", "end"]
+      }]
+    },
+    "permissions": ["ttsEngine"]
+  },
+  "update_url": {
+    "update_url": "<%=updateUrl%>"
+  },
+  "versionName": {
+    "version_name": "<%=versionName%>"
+  },
+  "webAccessibleResources": {
+    "web_accessible_resources": ["<%=webAccessibleResources%>"]
+  },
+  "fileSystem": {
+    "permission": [{"fileSystem": ["write", "retainEntries", "directory"]}]
+  },
+  "mediaGalleries": {
+    "permission": [{"mediaGalleries": ["read", "delete", "copyTo", "allAutoDetected"]}]
+  },
+  "notifications": {
+    "web_accessible_resources": ["<%=icon48%>"],
+    "permissions": ["notifications"]
+  },
+  "contextMenus": {
+    "icons": {
+      "16": "<%=icon16%>"
+    }
+  },
+  "cookies": {
+    "permission": ["cookies", "*://*.for-cookies.com"]
+  },
+  "declarativeWebRequest": {
+    "permission": ["declarativeWebRequest", "*://declarative-web-request.com/*"]
+  },
+  "webRequest": {
+    "permission": ["webRequest", "*://*.web-request.com/"]
+  }
+}

@@ -67,14 +67,21 @@ function filterJSON(data) {
       prop = _.merge.apply(this, prop);
     }
 
+    // remote unuse filed
     if (prop.whitelist) {
       delete prop.whitelist;
+    } else if (prop.location) {
+      delete prop.location;
     }
 
     output[key] = prop;
   });
 
   return output;
+}
+
+function organizeManifest(manifest) {
+
 }
 
 function writeJSON(f, data, done) {
