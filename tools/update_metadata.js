@@ -132,17 +132,23 @@ function updateJSON(f) {
   return defer.promise;
 }
 
-function main(millisec) {
-  next(features, updateJSON).then(function (res) {
-    process.exit(0);
-  }).catch(function () {
-    process.exit(-1);
-  });
-
-  setTimeout(function () {
-    console.log('Applicant time is over. Check your health of connections');
-    process.exit(-1);
-  }, millisec);
+function exit(res, log) {
+  if (log) {
+    console.log(log);
+  }
+  process.exit(res ? 0 : -1);
 }
 
-main(20000);
+function main(millisec) {
+  var tid = setTimeout(function () {
+    exit(false, 'Applicant time is over. Check your connection health');
+  }, 10 * 1000);
+
+  clearTimeout(tid);
+
+  next(features, updateJSON).then(exit).catch(function(err) {
+    exit(false, err.toString());
+  });
+}
+
+main();
