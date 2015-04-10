@@ -50,6 +50,9 @@ function diff(src, dest) {
   return diff;
 }
 
+function sentencify(argument) {
+  // body...
+}
 function filterJSON(data) {
   var json = JSON.parse(minify(data));
   var output = {};
@@ -59,10 +62,11 @@ function filterJSON(data) {
     if (_.isArray(prop)) {
       // append merge function at end of args
       prop.push(function(p1, p2) {
-        if (p1 !== undefined && !_.isArray(p1)) {
-          p1 = [p1];
+        if (!_.isArray(p1)) {
+          return (p1 === p2) ? p1 : _.compact([p1, p2]).join(', ');
+        } else {
+          return _.union(p1, p2);
         }
-        return _.union(p1, p2);
       });
 
       prop = _.merge.apply(this, prop);
@@ -79,10 +83,6 @@ function filterJSON(data) {
   });
 
   return output;
-}
-
-function organizeManifest(manifest) {
-
 }
 
 function writeJSON(f, data, done) {
@@ -114,20 +114,10 @@ function writeJSON(f, data, done) {
   }
 }
 
-function getJSON(url, cb) {
-  if (!url) {
-    fs.readFile('./lib/metadata/manifest_features.json', function(err, data) {
-      cb(err, data.toString());
-    });
-  } else {
-    got(url, cb);
-  }
-}
-
 function updateJSON(f) {
   var defer = q.defer();
 
-  getJSON(f.url, function(err, data, res) {
+  got(f.url, function(err, data, res) {
     if (err) {
       return defer.reject(err);
     }

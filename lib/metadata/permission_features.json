@@ -76,9 +76,7 @@
     ]
   },
   "app.window.alpha": {
-    "channel": [
-      "dev"
-    ],
+    "channel": "dev, stable",
     "extension_types": [
       "platform_app"
     ]
@@ -90,9 +88,7 @@
     ]
   },
   "audio": {
-    "channel": [
-      "dev"
-    ],
+    "channel": "dev, stable",
     "extension_types": [
       "platform_app"
     ]
@@ -102,13 +98,10 @@
     "extension_types": [
       "extension",
       "legacy_packaged_app"
-    ],
-    "location": "component"
+    ]
   },
   "background": {
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable",
     "extension_types": [
       "extension",
       "legacy_packaged_app",
@@ -147,8 +140,7 @@
       "extension",
       "legacy_packaged_app",
       "platform_app"
-    ],
-    "location": "component"
+    ]
   },
   "browser": {
     "channel": "dev",
@@ -172,9 +164,7 @@
     ]
   },
   "cast.streaming": {
-    "channel": [
-      "dev"
-    ],
+    "channel": "dev, stable",
     "extension_types": [
       "extension"
     ]
@@ -229,8 +219,7 @@
       "extension",
       "legacy_packaged_app",
       "platform_app"
-    ],
-    "location": "component"
+    ]
   },
   "contentSettings": {
     "channel": "stable",
@@ -255,9 +244,7 @@
     ]
   },
   "copresence": {
-    "channel": [
-      "dev"
-    ],
+    "channel": "dev, stable",
     "extension_types": [
       "extension",
       "platform_app"
@@ -271,17 +258,13 @@
     "location": "component"
   },
   "diagnostics": {
-    "channel": [
-      "dev"
-    ],
+    "channel": "dev, stable",
     "extension_types": [
       "platform_app"
     ]
   },
   "debugger": {
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable",
     "extension_types": [
       "extension",
       "legacy_packaged_app",
@@ -349,8 +332,7 @@
     "channel": "stable",
     "extension_types": [
       "platform_app"
-    ],
-    "location": "component"
+    ]
   },
   "embeddedExtensionOptions": {
     "channel": "trunk",
@@ -366,8 +348,7 @@
     "extension_types": [
       "extension",
       "legacy_packaged_app"
-    ],
-    "location": "policy"
+    ]
   },
   "enterprise.platformKeysPrivate": {
     "channel": "stable",
@@ -419,15 +400,12 @@
       "legacy_packaged_app",
       "platform_app"
     ],
-    "location": "component",
     "platforms": [
       "chromeos"
     ]
   },
   "fileSystem": {
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable",
     "extension_types": [
       "platform_app",
       "extension"
@@ -446,9 +424,7 @@
     ]
   },
   "fileSystem.write": {
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable",
     "extension_types": [
       "platform_app",
       "extension"
@@ -465,7 +441,6 @@
     "extension_types": [
       "platform_app"
     ],
-    "location": "component",
     "platforms": [
       "chromeos"
     ]
@@ -532,8 +507,7 @@
     "extension_types": [
       "legacy_packaged_app",
       "platform_app"
-    ],
-    "location": "component"
+    ]
   },
   "idltest": {
     "channel": "trunk",
@@ -569,9 +543,7 @@
     ]
   },
   "inputMethodPrivate": {
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable",
     "extension_types": [
       "extension",
       "legacy_packaged_app",
@@ -580,7 +552,7 @@
     "platforms": [
       "chromeos"
     ],
-    "location": []
+    "location": "component"
   },
   "ledger": {
     "channel": "trunk",
@@ -593,16 +565,13 @@
     ]
   },
   "location": {
-    "channel": [
-      "dev"
-    ],
+    "channel": "dev, stable",
     "extension_types": [
       "extension",
       "legacy_packaged_app",
       "platform_app",
       "hosted_app"
-    ],
-    "location": []
+    ]
   },
   "logPrivate": {
     "channel": "stable",
@@ -619,9 +588,7 @@
     ]
   },
   "management": {
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable",
     "extension_types": [
       "extension",
       "legacy_packaged_app",
@@ -678,7 +645,6 @@
       "legacy_packaged_app",
       "platform_app"
     ],
-    "location": "component",
     "platforms": [
       "chromeos"
     ]
@@ -748,7 +714,6 @@
       "legacy_packaged_app",
       "platform_app"
     ],
-    "location": "component",
     "platforms": [
       "chromeos"
     ]
@@ -793,9 +758,7 @@
     ]
   },
   "processes": {
-    "channel": [
-      "dev"
-    ],
+    "channel": "dev, beta, stable",
     "extension_types": [
       "extension"
     ]
@@ -840,9 +803,7 @@
       "win",
       "linux"
     ],
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable",
     "extension_types": [
       "platform_app"
     ],
@@ -892,9 +853,7 @@
     ]
   },
   "system.cpu": {
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable",
     "extension_types": [
       "extension",
       "legacy_packaged_app",
@@ -903,9 +862,7 @@
     ]
   },
   "system.memory": {
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable",
     "extension_types": [
       "extension",
       "legacy_packaged_app",
@@ -914,18 +871,14 @@
     ]
   },
   "system.network": {
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable",
     "extension_types": [
       "platform_app",
       "hosted_app"
     ]
   },
   "system.storage": {
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable",
     "extension_types": [
       "extension",
       "legacy_packaged_app",
@@ -934,9 +887,7 @@
     ]
   },
   "system.display": {
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable",
     "extension_types": [
       "extension",
       "legacy_packaged_app",
@@ -950,13 +901,10 @@
       "extension",
       "legacy_packaged_app",
       "platform_app"
-    ],
-    "location": "component"
+    ]
   },
   "tabs": {
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable",
     "extension_types": [
       "extension",
       "legacy_packaged_app",
@@ -1035,7 +983,6 @@
     "extension_types": [
       "platform_app"
     ],
-    "location": "component",
     "platforms": [
       "chromeos"
     ]
@@ -1082,13 +1029,11 @@
     ]
   },
   "webview": {
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable",
     "extension_types": [
       "platform_app",
       "extension"
     ],
-    "location": []
+    "location": "component"
   }
 }

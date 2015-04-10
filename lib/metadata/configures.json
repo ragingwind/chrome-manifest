@@ -174,10 +174,9 @@
   "optionsUi": {
     "options_ui": {
       "page": "<%=optionsUIPage%>",
-      "chrome_style": true,
+      "chrome_style": true
     }
   },
-  "permissions": [],
   "plugins": {
     "plugins": [{"path": "<%=pluginPath%>"}]
   },
@@ -248,10 +247,10 @@
     "web_accessible_resources": ["<%=webAccessibleResources%>"]
   },
   "fileSystem": {
-    "permission": [{"fileSystem": ["write", "retainEntries", "directory"]}]
+    "permissions": [{"fileSystem": ["write", "retainEntries", "directory"]}]
   },
   "mediaGalleries": {
-    "permission": [{"mediaGalleries": ["read", "delete", "copyTo", "allAutoDetected"]}]
+    "permissions": [{"mediaGalleries": ["read", "delete", "copyTo", "allAutoDetected"]}]
   },
   "notifications": {
     "web_accessible_resources": ["<%=icon48%>"],
@@ -263,12 +262,12 @@
     }
   },
   "cookies": {
-    "permission": ["cookies", "*://*.for-cookies.com"]
+    "permissions": ["cookies", "*://*.for-cookies.com"]
   },
   "declarativeWebRequest": {
-    "permission": ["declarativeWebRequest", "*://declarative-web-request.com/*"]
+    "permissions": ["declarativeWebRequest", "*://declarative-web-request.com/*"]
   },
   "webRequest": {
-    "permission": ["webRequest", "*://*.web-request.com/"]
+    "permissions": ["webRequest", "*://*.web-request.com/"]
   }
 }

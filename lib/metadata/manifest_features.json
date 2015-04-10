@@ -45,9 +45,7 @@
     ]
   },
   "bluetooth": {
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable",
     "extension_types": [
       "platform_app"
     ],
@@ -74,9 +72,7 @@
     ]
   },
   "chrome_ui_overrides": {
-    "channel": [
-      "dev"
-    ],
+    "channel": "dev, stable",
     "extension_types": [
       "extension"
     ]
@@ -138,9 +134,7 @@
     ]
   },
   "display_in_launcher": {
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable",
     "extension_types": [
       "legacy_packaged_app",
       "platform_app",
@@ -149,9 +143,7 @@
     "location": "component"
   },
   "display_in_new_tab_page": {
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable",
     "extension_types": [
       "legacy_packaged_app",
       "platform_app",
@@ -160,9 +152,7 @@
     "location": "component"
   },
   "export": {
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable, dev",
     "extension_types": [
       "shared_module"
     ]
@@ -177,9 +167,7 @@
     ]
   },
   "file_browser_handlers": {
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable",
     "extension_types": [
       "extension",
       "legacy_packaged_app",
@@ -187,9 +175,7 @@
     ]
   },
   "file_handlers": {
-    "channel": [
-      "stable"
-    ],
+    "channel": "stable",
     "extension_types": [
       "platform_app",
       "extension"
@@ -382,9 +368,7 @@
     "min_manifest_version": 2
   },
   "system_indicator": {
-    "channel": [
-      "dev"
-    ],
+    "channel": "dev, stable",
     "extension_types": [
       "extension",
       "legacy_packaged_app",
