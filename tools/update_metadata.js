@@ -50,9 +50,33 @@ function diff(src, dest) {
   return diff;
 }
 
-function sentencify(argument) {
-  // body...
+// Add missing, custrom manifest property
+function customizeManifest(manifest) {
+  // background.page for extensions
+  manifest['backabout_page'] =  {
+    'channel': 'stable',
+    'extension_types': ['extensions']
+  }
+
+  // background.script for extensions
+  manifest['backabout_script'] =  {
+    'channel': 'stable',
+    'extension_types': ['extensions']
+  }
+
+  manifest['kiosk_enabled'] = {
+    'channel': 'stable',
+    'extension_types': ['platform_app']
+  }
+
+  manifest['kiosk_only'] = {
+    'channel': 'stable',
+    'extension_types': ['platform_app']
+  }
+
+  return manifest;
 }
+
 function filterJSON(data) {
   var json = JSON.parse(minify(data));
   var output = {};
@@ -122,7 +146,13 @@ function updateJSON(f) {
       return defer.reject(err);
     }
 
-    writeJSON(f, filterJSON(data), function () {
+    var json = filterJSON(data);
+
+    if (f.url.indexOf('manifest') >= 0) {
+      json = customizeManifest(json);
+    }
+
+    writeJSON(f, json, function () {
       defer.resolve();
     });
   });

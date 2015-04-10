@@ -1,15 +1,20 @@
 {
-  "manifestVersion": {
-    "manifest_version": 2
+  "app": {
+    "background": {
+      "scripts": ["<%=backgroundjs%>"]
+    }
   },
-  "version": {
-    "version": "0.0.0"
+  "author": "<%=author%>",
+  "backgroundPage": {
+    "background": {
+      "page": "background.html",
+      "persistent": false
+    }
   },
-  "icons": {
-    "icons": {
-      "16": "<%=icon16%>",
-      "48": "<%=icon48%>",
-      "128": "<%=icon128%>"
+  "backgroundScript": {
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
     }
   },
   "browserAction": {
@@ -22,6 +27,58 @@
        "default_popup": "<%=defaultPopup%>"
      }
   },
+  "bluetooth": {
+    "uuids": ["<%=bluetoothUUI%&>"],
+    "socket": true,
+    "low_energy": true
+  },
+  "manifestVersion": {
+    "manifest_version": 2
+  },
+  "name": {
+    "name": "<%=name%>"
+  },
+  "version": {
+    "version": "0.0.0"
+  },
+  "currentLocale": {
+    "current_locale": "<%=defaultLocale%>",
+  },
+  "defaultLocale": {
+    "default_locale": "<%=defaultLocale%>"
+  },
+  "description": "<%=description%>",
+  "icons": {
+    "icons": {
+      "16": "<%=icon16%>",
+      "48": "<%=icon48%>",
+      "128": "<%=icon128%>"
+    }
+  },
+  "fileHandlers": {
+    "file_handlers": {
+      "text": {
+        "types": ["text/*"],
+        "title": "<%=fileHandlerForText%>"
+      },
+      "image": {
+        "types": [
+          "image/png",
+          "image/jpeg"
+        ],
+        "extensions": [
+          "tiff"
+        ],
+        "title": "<%=fileHandlerForImage%>"
+      },
+      "any": {
+        "extensions": [
+          "*"
+        ],
+        "title": "<%=fileHandlerForAny%>"
+      }
+    }
+  },
   "pageAction": {
     "page_action": {
       "default_icon": {
@@ -32,14 +89,7 @@
       "default_popup": "<%=defaultPopup%>"
     }
   },
-  "background": {
-    "background": {
-      "page": "background.html",
-      "scripts": ["background.js"],
-      "persistent": false
-    }
-  },
-  "chrome_settings_overrides": {
+  "chromeSettingsOverrides": {
     "chrome_settings_overrides": {
       "homepage": "<%=settingHomepage%>",
       "search_provider": {
@@ -141,7 +191,13 @@
   "key": {
     "key": "<%=key%>"
   },
-  "minimum_chrome_version": {
+  "kioskEnabled": {
+    "kiosk_enabled": true
+  },
+  "kioskOnly": {
+    "kiosk_only": true
+  },
+  "minimumChromeVersion": {
     "minimum_chrome_version": "<%=minimumChromeVersion%>"
   },
   "naclModules": {
@@ -154,7 +210,7 @@
     "client_id": "<%=oauth2ClientId%>",
     "scopes": ["<%=oauth2Scope%>"]
   },
-  "offline_enabled": {
+  "offlineEnabled": {
     "offline_enabled": false
   },
   "omnibox": {
@@ -179,6 +235,9 @@
   },
   "plugins": {
     "plugins": [{"path": "<%=pluginPath%>"}]
+  },
+  "platforms": {
+    "platforms": "<%=platforms%>"
   },
   "requirements": {
     "requirements": {
@@ -237,8 +296,24 @@
     },
     "permissions": ["ttsEngine"]
   },
-  "update_url": {
+  "updateUrl": {
     "update_url": "<%=updateUrl%>"
+  },
+  "urlHandlers": {
+    "url_handlers": {
+      "desktop_site": {
+        "title": "Desktop Site",
+        "matches": [
+          "*://example.com/*"
+        ]
+      },
+      "mobile_site": {
+        "title": "Mobile Site",
+        "matches": [
+          "*://m.example.com/*"
+        ]
+      }
+    }
   },
   "versionName": {
     "version_name": "<%=versionName%>"
@@ -269,5 +344,16 @@
   },
   "webRequest": {
     "permissions": ["webRequest", "*://*.web-request.com/"]
+  },
+  "webview": {
+    "webview": {
+      "partitions": [
+        {
+          "name": "static",
+          "accessible_resources": ["header.html", "footer.html", "static.png"]
+        }
+      ]
+    },
+    "permissions": ["webview"]
   }
 }

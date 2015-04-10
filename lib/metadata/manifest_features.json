@@ -401,5 +401,29 @@
   "version": {
     "channel": "stable",
     "extension_types": "all"
+  },
+  "backabout_page": {
+    "channel": "stable",
+    "extension_types": [
+      "extensions"
+    ]
+  },
+  "backabout_script": {
+    "channel": "stable",
+    "extension_types": [
+      "extensions"
+    ]
+  },
+  "kiosk_enabled": {
+    "channel": "stable",
+    "extension_types": [
+      "platform_app"
+    ]
+  },
+  "kiosk_only": {
+    "channel": "stable",
+    "extension_types": [
+      "platform_app"
+    ]
   }
 }
