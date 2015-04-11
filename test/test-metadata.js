@@ -69,7 +69,6 @@ it('should return manifest', function () {
     'content_scripts',
     'tts_engine'
   ];
-
   var permissions = [
     'tts_engine',
     'notifications',
@@ -87,4 +86,28 @@ it('should return manifest', function () {
   assert(manifest.content_scripts);
   assert(manifest.tts_engine);
   assert(manifest.web_accessible_resources);
+});
+
+it('should return manifest converting', function () {
+  var fields = [
+    'background-scripts',
+    'manifest_version',
+    'icons',
+    'content_scripts',
+    'tts_engine'
+  ];
+
+  var templateData = {
+    backgroundJS: 'background.js',
+    icon16: 'icon/icon-16.png',
+    icon48: 'icon/icon-48.png',
+    icon128: 'icon/icon-128.png'
+  };
+
+  var manifest = metadata.getManifest(fields, null, templateData);
+
+  assert.equal(manifest.icons['16'], 'icon/icon-16.png');
+  assert.equal(manifest.icons['48'], 'icon/icon-48.png');
+  assert.equal(manifest.icons['128'], 'icon/icon-128.png');
+  assert.equal(manifest.background.scripts[0], 'background.js');
 });
