@@ -1,19 +1,19 @@
 {
   "app": {
     "background": {
-      "scripts": ["<%=backgroundjs%>"]
+      "scripts": ["<%=backgroundJS%>"]
     }
   },
   "author": "<%=author%>",
   "backgroundPage": {
     "background": {
-      "page": "background.html",
+      "page": "<%=backgroundHTML%>",
       "persistent": false
     }
   },
-  "backgroundScript": {
+  "backgroundScripts": {
     "background": {
-      "scripts": ["background.js"],
+      "scripts": ["<%=backgroundJS%>"],
       "persistent": false
     }
   },
@@ -42,7 +42,7 @@
     "version": "0.0.0"
   },
   "currentLocale": {
-    "current_locale": "<%=defaultLocale%>",
+    "current_locale": "<%=defaultLocale%>"
   },
   "defaultLocale": {
     "default_locale": "<%=defaultLocale%>"

@@ -408,7 +408,7 @@
       "extensions"
     ]
   },
-  "backabout_script": {
+  "backabout_scripts": {
     "channel": "stable",
     "extension_types": [
       "extensions"
