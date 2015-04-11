@@ -122,7 +122,7 @@
           "default": "Ctrl+Shift+Y",
           "mac": "Command+Shift+Y"
         },
-        "description": "Toggle feature foo"
+        "description": "Toggle feature for x"
       },
       "_execute_browser_action": {
         "suggested_key": {
@@ -337,13 +337,13 @@
     }
   },
   "cookies": {
-    "permissions": ["cookies", "*://*.for-cookies.com"]
+    "permissions": ["cookies", "*://<%=cookiesURL%>"]
   },
   "declarativeWebRequest": {
-    "permissions": ["declarativeWebRequest", "*://declarative-web-request.com/*"]
+    "permissions": ["declarativeWebRequest", "*://<%=declarativeWebRequestURL%>/*"]
   },
   "webRequest": {
-    "permissions": ["webRequest", "*://*.web-request.com/"]
+    "permissions": ["webRequest", "*://*.<<%=webRequestURK%>/"]
   },
   "webview": {
     "webview": {
