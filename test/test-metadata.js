@@ -4,7 +4,7 @@
 
 var assert = require('assert');
 var fs = require('fs');
-var metadata = require('../lib/metadata');
+var metadata = require('../lib/manifest').Metadata;
 
 function hasValue(src, dest) {
   var ret = false;
@@ -62,21 +62,23 @@ it('should return manifest for extension and stable', function () {
 });
 
 it('should return manifest', function () {
-  var fields = [
-    'about_page',
-    'manifest_version',
-    'icons',
-    'content_scripts',
-    'tts_engine'
-  ];
-  var permissions = [
-    'tts_engine',
-    'notifications',
-    'contextMenus',
-    'cookies'
-  ];
-
-  var manifest = metadata.getManifest(fields, permissions);
+  var manifest = metadata.getManifest({
+    fields: [
+      'about_page',
+      'manifest_version',
+      'icons',
+      'content_scripts',
+      'tts_engine',
+      'sandbox',
+      'content_security_policy'
+    ],
+    permissions: [
+      'tts_engine',
+      'notifications',
+      'contextMenus',
+      'cookies'
+    ]
+  });
 
   assert.equal(manifest.permissions.length, 7);
   assert(manifest.about_page);
@@ -88,23 +90,56 @@ it('should return manifest', function () {
   assert(manifest.web_accessible_resources);
 });
 
-it('should return manifest converting', function () {
-  var fields = [
-    'background-scripts',
-    'manifest_version',
-    'icons',
-    'content_scripts',
-    'tts_engine'
-  ];
+it('should return manifest with content_security_policy merging policies', function () {
+  var manifest = metadata.getManifest({
+    fields: [
+      'sandbox',
+      'content_security_policy'
+    ],
+    templateData: metadata.getTemplateData()
+  });
 
-  var templateData = {
-    backgroundJS: 'background.js',
-    icon16: 'icon/icon-16.png',
-    icon48: 'icon/icon-48.png',
-    icon128: 'icon/icon-128.png'
-  };
+  assert(manifest.content_security_policy.indexOf('sandbox allow-scripts;') >= 0);
+  assert(manifest.content_security_policy.indexOf('\'unsafe-eval\' https://example.com; object-src \'self\'') >= 0);
+});
 
-  var manifest = metadata.getManifest(fields, null, templateData);
+it('should return manifest having converting template data', function () {
+  var manifest = metadata.getManifest({
+    fields: [
+      'background-scripts',
+      'manifest_version',
+      'icons',
+      'content_scripts',
+      'tts_engine'
+    ],
+    templateData: metadata.getTemplateData()
+  });
+
+  assert.equal(manifest.icons['16'], 'images/icon16.png');
+  assert.equal(manifest.icons['48'], 'images/icon48.png');
+  assert.equal(manifest.icons['128'], 'images/icon128.png');
+  assert.equal(manifest.background.scripts[0], 'scripts/background.js');
+});
+
+
+it('should return manifest having converting template data by tweaked', function () {
+  var templateData = metadata.getTemplateData();
+
+  templateData.backgroundJS = 'background.js',
+  templateData.icon16 = 'icon/icon-16.png',
+  templateData.icon48 = 'icon/icon-48.png',
+  templateData.icon128 = 'icon/icon-128.png'
+
+  var manifest = metadata.getManifest({
+    fields: [
+      'background-scripts',
+      'manifest_version',
+      'icons',
+      'content_scripts',
+      'tts_engine'
+    ],
+    templateData: templateData
+  });
 
   assert.equal(manifest.icons['16'], 'icon/icon-16.png');
   assert.equal(manifest.icons['48'], 'icon/icon-48.png');

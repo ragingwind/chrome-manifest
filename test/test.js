@@ -4,7 +4,7 @@
 
 var assert = require('assert');
 var fs = require('fs');
-var Manifest = require('../');
+var Manifest = require('../lib/manifest');
 
 it('should return manifest data', function () {
   var manifest = new Manifest({

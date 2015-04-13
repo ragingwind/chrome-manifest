@@ -59,7 +59,7 @@
     "file_handlers": {
       "text": {
         "types": ["text/*"],
-        "title": "<%=fileHandlerForText%>"
+        "title": "<%=titleForfileTextHandler%>"
       },
       "image": {
         "types": [
@@ -69,13 +69,13 @@
         "extensions": [
           "tiff"
         ],
-        "title": "<%=fileHandlerForImage%>"
+        "title": "<%=titleForfileImageHandler%>"
       },
       "any": {
         "extensions": [
           "*"
         ],
-        "title": "<%=fileHandlerForAny%>"
+        "title": "<%=titleForfileAnyHandler%>"
       }
     }
   },
@@ -145,7 +145,7 @@
     "content_scripts": [
       {
         "matches": ["http://*/*", "https://*/*"],
-        "js": ["<%=contentScript"],
+        "js": ["<%=contentScriptJS"],
         "run_at": "document_end",
         "all_frames": false
       }
@@ -252,7 +252,8 @@
   "sandbox": {
     "sandbox": {
       "pages": ["<%=sandboxPage%>"]
-    }
+    },
+    "content_security_policy": "sandbox allow-scripts;"
   },
   "shortName": {
     "short_name": "<%=shortName%>"
@@ -261,7 +262,12 @@
     "signature": "<%=signature%>"
   },
   "spellcheck": {
-    "spellcheck": "<%=spellcheck%>"
+    "spellcheck": {
+      "dictionary_language": "testEnglish",
+      "dictionary_locale": "te",
+      "dictionary_format": "hunspell",
+      "dictionary_path": "testEnglish.bdic"
+    }
   },
   "storage": {
     "storage": {
@@ -337,13 +343,13 @@
     }
   },
   "cookies": {
-    "permissions": ["cookies", "*://<%=cookiesURL%>"]
+    "permissions": ["cookies", "<%=cookiesURL%>"]
   },
   "declarativeWebRequest": {
-    "permissions": ["declarativeWebRequest", "*://<%=declarativeWebRequestURL%>/*"]
+    "permissions": ["declarativeWebRequest", "<%=declarativeWebRequestURL%>"]
   },
   "webRequest": {
-    "permissions": ["webRequest", "*://*.<<%=webRequestURK%>/"]
+    "permissions": ["webRequest", "<<%=webRequestURL%>"]
   },
   "webview": {
     "webview": {
