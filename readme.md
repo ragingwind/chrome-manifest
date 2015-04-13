@@ -16,7 +16,7 @@ $ npm install --save chrome-manifest
 
 ```js
 var Manifest = require('chrome-manifest');
-var manifest = new Manifest({path: 'manifest.json'});
+var manifest = new Manifest('manifest.json');
 
 // exclude value or key what you want
 manifest.exclude([

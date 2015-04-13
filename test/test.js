@@ -7,9 +7,7 @@ var fs = require('fs');
 var Manifest = require('../lib/manifest');
 
 it('should return manifest data', function () {
-  var manifest = new Manifest({
-    path: 'test/fixtures/manifest.json'
-  });
+  var manifest = new Manifest('test/fixtures/manifest.json');
   var savedManifest = null;
 
   assert(manifest.toJSON().name === 'Chrome Manifest', 'Names must be same');
@@ -18,17 +16,35 @@ it('should return manifest data', function () {
   assert(manifest.toString(), fs.readFileSync('test/fixtures/manifest.json'));
 
   manifest.save('test/manifest.copy.json');
-  savedManifest = new Manifest({
-    path: 'test/manifest.copy.json'
-  });
+  savedManifest = new Manifest('test/manifest.copy.json');
 
   assert(manifest.toString() == savedManifest.toString(), 'Must be same value');
 });
 
-it('should return updated value', function () {
+it('should return manifest data same as it passed', function () {
   var manifest = new Manifest({
-    path: 'test/fixtures/manifest.json'
+    'icons': {
+      '16': 'images/icon-16.png',
+      '128': 'images/icon-128.png'
+    },
+    'app': {
+      'background': {
+        'scripts': [
+          'scripts/main.js',
+          'scripts/chromereload.js'
+        ]
+      }
+    }
   });
+
+  assert.equal(manifest.toJSON().icons['16'], 'images/icon-16.png');
+  assert.equal(manifest.toJSON().icons['128'], 'images/icon-128.png');
+  assert.equal(manifest.toJSON().app.background.scripts[0], 'scripts/main.js');
+  assert.equal(manifest.toJSON().app.background.scripts[1], 'scripts/chromereload.js');
+});
+
+it('should return updated value', function () {
+  var manifest = new Manifest('test/fixtures/manifest.json');
   var savedManifest = null;
 
   // Add new uri second content script
@@ -70,9 +86,7 @@ it('should return updated value', function () {
 });
 
 it('should return overwritten value', function () {
-  var manifest = new Manifest({
-    path: 'test/fixtures/manifest.json'
-  });
+  var manifest = new Manifest('test/fixtures/manifest.json');
   var savedManifest = null;
 
   // Add new uri second content script
