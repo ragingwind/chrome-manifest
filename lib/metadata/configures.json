@@ -4,7 +4,9 @@
       "scripts": ["<%=backgroundJS%>"]
     }
   },
-  "author": "<%=author%>",
+  "author": {
+    "author": "<%=author%>"
+  },
   "backgroundPage": {
     "background": {
       "page": "<%=backgroundHTML%>",
@@ -47,7 +49,9 @@
   "defaultLocale": {
     "default_locale": "<%=defaultLocale%>"
   },
-  "description": "<%=description%>",
+  "description": {
+    "description": "<%=description%>"
+  },
   "icons": {
     "icons": {
       "16": "<%=icon16%>",
@@ -145,7 +149,7 @@
     "content_scripts": [
       {
         "matches": ["http://*/*", "https://*/*"],
-        "js": ["<%=contentScriptJS"],
+        "js": ["<%=contentScriptJS%>"],
         "run_at": "document_end",
         "all_frames": false
       }

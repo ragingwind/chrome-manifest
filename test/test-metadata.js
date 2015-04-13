@@ -4,7 +4,8 @@
 
 var assert = require('assert');
 var fs = require('fs');
-var metadata = require('../lib/manifest').Metadata;
+var Manifest = require('../lib/manifest');
+var metadata = Manifest.Metadata;
 
 function hasValue(src, dest) {
   var ret = false;
@@ -146,3 +147,31 @@ it('should return manifest having converting template data by tweaked', function
   assert.equal(manifest.icons['128'], 'icon/icon-128.png');
   assert.equal(manifest.background.scripts[0], 'background.js');
 });
+
+it('should return all manifest and permissions', function () {
+  // Query permissions by stable and platform_app(Chrome Apps)
+  var permissions = metadata.queryPermissions({
+    channel: 'stable',
+    extensionTypes: ['platform_app']
+  });
+
+  // Query manifest fields by stable and extension
+  var fields = metadata.queryManifest({
+    channel: 'stable',
+    extensionTypes: ['extension']
+  });
+
+  // Get basic template data
+  var templateData = metadata.getTemplateData();
+
+  templateData.backgroundJS = 'background.js',
+  templateData.icon16 = 'icon/icon-16.png',
+  templateData.icon48 = 'icon/icon-48.png',
+  templateData.icon128 = 'icon/icon-128.png'
+
+  var manifest = metadata.getManifest({
+    fields: Object.keys(fields),
+    permissions: Object.keys(permissions),
+    templateData: templateData
+  });
+})

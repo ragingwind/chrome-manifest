@@ -12,9 +12,11 @@ $ npm install --save chrome-manifest
 
 ## Usage
 
+### Manifest
+
 ```js
 var Manifest = require('chrome-manifest');
-var manifest = new Manifest('manifest.json');
+var manifest = new Manifest({path: 'manifest.json'});
 
 // exclude value or key what you want
 manifest.exclude([
@@ -37,7 +39,7 @@ manifest.exclude([
 manifest.prop('content_scripts.[0].matches').length;
 manifest.prop('background.scripts');
 manifest.val('content_scripts.[0].matches.[0]');
-manifest.manifest.background.scripts[1];
+var bgscript = manifest.manifest.background.scripts[1];
 manifest.prop('manifest_version');
 manifest.manifest['key'];
 
@@ -59,6 +61,41 @@ console.log(manifest.get('background.scripts.[0]'));
 ```sh
 $ npm install --global chrome-manifest
 $ chrome-manifest --help
+```
+
+### Metadata
+
+Generating manifest.json with basic sample configures
+
+```js
+var Manifest = require('chrome-manifest');
+var metadata = require('chrome-manifest').Metadata;
+
+// Query permissions by stable and platform_app(Chrome Apps)
+var permissions = metadata.queryPermissions({
+  channel: 'stable',
+  extensionTypes: ['platform_app']
+});
+
+// Query manifest fields by stable and extension
+var fields = metadata.queryManifest({
+  channel: 'stable',
+  extensionTypes: ['extension']
+});
+
+// Get basic template data
+var templateData = metadata.getTemplateData();
+
+templateData.backgroundJS = 'background.js',
+templateData.icon16 = 'icon/icon-16.png',
+templateData.icon48 = 'icon/icon-48.png',
+templateData.icon128 = 'icon/icon-128.png'
+
+var manifest = metadata.getManifest({
+  fields: Object.keys(fields),
+  permissions: Object.keys(permissions),
+  templateData: templateData
+});
 ```
 
 ## License
