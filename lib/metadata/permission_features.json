@@ -19,14 +19,6 @@
       "chromeos"
     ]
   },
-  "accessibilityPrivate": {
-    "channel": "stable",
-    "extension_types": [
-      "extension",
-      "legacy_packaged_app",
-      "platform_app"
-    ]
-  },
   "activeTab": {
     "channel": "stable",
     "extension_types": [
@@ -411,25 +403,6 @@
       "extension"
     ]
   },
-  "fileSystem.directory": {
-    "channel": "stable",
-    "extension_types": [
-      "platform_app"
-    ]
-  },
-  "fileSystem.retainEntries": {
-    "channel": "stable",
-    "extension_types": [
-      "platform_app"
-    ]
-  },
-  "fileSystem.write": {
-    "channel": "stable",
-    "extension_types": [
-      "platform_app",
-      "extension"
-    ]
-  },
   "fileSystemProvider": {
     "channel": "trunk",
     "extension_types": [
@@ -597,36 +570,6 @@
     ]
   },
   "mediaGalleries": {
-    "channel": "stable",
-    "extension_types": [
-      "platform_app"
-    ]
-  },
-  "mediaGalleries.allAutoDetected": {
-    "channel": "stable",
-    "extension_types": [
-      "platform_app"
-    ]
-  },
-  "mediaGalleries.scan": {
-    "channel": "dev",
-    "extension_types": [
-      "platform_app"
-    ]
-  },
-  "mediaGalleries.read": {
-    "channel": "stable",
-    "extension_types": [
-      "platform_app"
-    ]
-  },
-  "mediaGalleries.copyTo": {
-    "channel": "stable",
-    "extension_types": [
-      "platform_app"
-    ]
-  },
-  "mediaGalleries.delete": {
     "channel": "stable",
     "extension_types": [
       "platform_app"

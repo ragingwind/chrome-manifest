@@ -31,27 +31,8 @@ var args = meow({
   }
 });
 
-var features = [{
-  url: 'http://src.chromium.org/svn/trunk/src/chrome/common/extensions/api/_manifest_features.json',
-  output: path.join(args.flags.output, 'manifest_features.json')
-}, {
-  url: 'http://src.chromium.org/svn/trunk/src/chrome/common/extensions/api/_permission_features.json',
-  output: path.join(args.flags.output, 'permission_features.json')
-}];
-
-function diff(src, dest) {
-  var diff = '';
-  jsdiff.diffChars(src, dest).forEach(function(part){
-    var color = part.added ? chalk.bgRed.bold : chalk.white;
-    if (!part.removed) {
-      diff += color(part.value);
-    }
-  });
-  return diff;
-}
-
 // Add missing, custrom manifest property
-function customizeManifest(manifest) {
+function filterManifest(manifest) {
   // background.page for extensions
   manifest['backabout_page'] =  {
     'channel': 'stable',
@@ -75,6 +56,49 @@ function customizeManifest(manifest) {
   }
 
   return manifest;
+}
+
+function filterPermission(permission) {
+  var removeFields = [
+    "accessibilityPrivate",
+    "mediaGalleries.allAutoDetected",
+    "mediaGalleries.scan",
+    "mediaGalleries.read",
+    "mediaGalleries.copyTo",
+    "mediaGalleries.delete",
+    "fileSystem.directory",
+    "fileSystem.retainEntries",
+    "fileSystem.write"
+  ];
+
+  removeFields.forEach(function (r) {
+    if (permission[r]) {
+      delete permission[r];
+    }
+  });
+
+  return permission;
+}
+
+var features = [{
+  url: 'http://src.chromium.org/svn/trunk/src/chrome/common/extensions/api/_manifest_features.json',
+  output: path.join(args.flags.output, 'manifest_features.json'),
+  prefilter: filterManifest
+}, {
+  url: 'http://src.chromium.org/svn/trunk/src/chrome/common/extensions/api/_permission_features.json',
+  output: path.join(args.flags.output, 'permission_features.json'),
+  prefilter: filterPermission
+}];
+
+function diff(src, dest) {
+  var diff = '';
+  jsdiff.diffChars(src, dest).forEach(function(part){
+    var color = part.added ? chalk.bgRed.bold : chalk.white;
+    if (!part.removed) {
+      diff += color(part.value);
+    }
+  });
+  return diff;
 }
 
 function filterJSON(data) {
@@ -148,8 +172,8 @@ function updateJSON(f) {
 
     var json = filterJSON(data);
 
-    if (f.url.indexOf('manifest') >= 0) {
-      json = customizeManifest(json);
+    if (f.prefilter) {
+      json = f.prefilter(json);
     }
 
     writeJSON(f, json, function () {
