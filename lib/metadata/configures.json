@@ -2,37 +2,37 @@
   "app": {
     "app": {
       "background": {
-        "scripts": ["<%=backgroundJS%>"]
+        "scripts": ["scripts/background.js"]
       }
     }
   },
   "author": {
-    "author": "<%=author%>"
+    "author": "Author Name"
   },
   "backgroundPage": {
     "background": {
-      "page": "<%=backgroundHTML%>",
+      "page": "background.html",
       "persistent": false
     }
   },
   "backgroundScripts": {
     "background": {
-      "scripts": ["<%=backgroundJS%>"],
+      "scripts": ["scripts/background.js"],
       "persistent": false
     }
   },
   "browserAction": {
     "browser_action": {
       "default_icon": {
-         "19": "<%=icon19%>",
-         "38": "<%=icon38%>"
+         "19": "images/icon-19.png",
+         "38": "images/icon-38.png"
        },
-       "default_title": "<%=defaultTitle%>",
-       "default_popup": "<%=defaultPopup%>"
+       "default_title": "Default Title",
+       "default_popup": "Default Popup"
      }
   },
   "bluetooth": {
-    "uuids": ["<%=bluetoothUUI%&>"],
+    "uuids": ["bluetooh-uuid"],
     "socket": true,
     "low_energy": true
   },
@@ -40,32 +40,32 @@
     "manifest_version": 2
   },
   "name": {
-    "name": "<%=name%>"
+    "name": "Your App/Extension Name"
   },
   "version": {
     "version": "0.0.0"
   },
   "currentLocale": {
-    "current_locale": "<%=defaultLocale%>"
+    "current_locale": "en"
   },
   "defaultLocale": {
-    "default_locale": "<%=defaultLocale%>"
+    "default_locale": "en"
   },
   "description": {
-    "description": "<%=description%>"
+    "description": "Description for Your App"
   },
   "icons": {
     "icons": {
-      "16": "<%=icon16%>",
-      "48": "<%=icon48%>",
-      "128": "<%=icon128%>"
+      "16": "images/icon-16.png",
+      "48": "images/icon-48.png",
+      "128": "images/icon-128.png"
     }
   },
   "fileHandlers": {
     "file_handlers": {
       "text": {
         "types": ["text/*"],
-        "title": "<%=titleForfileTextHandler%>"
+        "title": "Title for Text File Handler"
       },
       "image": {
         "types": [
@@ -75,29 +75,29 @@
         "extensions": [
           "tiff"
         ],
-        "title": "<%=titleForfileImageHandler%>"
+        "title": "Title for Image File Handler"
       },
       "any": {
         "extensions": [
           "*"
         ],
-        "title": "<%=titleForfileAnyHandler%>"
+        "title": "title for Any File Handler"
       }
     }
   },
   "pageAction": {
     "page_action": {
       "default_icon": {
-        "19": "<%=icon19%>",
-        "38": "<%=icon38%>"
+        "19": "images/icon-19.png",
+        "38": "images/icon-38.png"
       },
-      "default_title": "<%=defaultTitle%>",
-      "default_popup": "<%=defaultPopup%>"
+      "default_title": "Default Title",
+      "default_popup": "Default Popup"
     }
   },
   "chromeSettingsOverrides": {
     "chrome_settings_overrides": {
-      "homepage": "<%=settingHomepage%>",
+      "homepage": "http://www.homepage.com",
       "search_provider": {
         "name": "name.__MSG_url_domain__",
         "keyword": "keyword.__MSG_url_domain__",
@@ -117,7 +117,7 @@
         "encoding": "UTF-8",
         "is_default": true
       },
-      "startup_pages": ["<%=settingStartupPage%>"]
+      "startup_pages": ["http://www.startup.com"]
     },
     "default_locale": "en"
   },
@@ -128,7 +128,7 @@
           "default": "Ctrl+Shift+Y",
           "mac": "Command+Shift+Y"
         },
-        "description": "Toggle feature for x"
+        "description": "Toggle feature for X"
       },
       "_execute_browser_action": {
         "suggested_key": {
@@ -151,7 +151,7 @@
     "content_scripts": [
       {
         "matches": ["http://*/*", "https://*/*"],
-        "js": ["<%=contentScriptJS%>"],
+        "js": ["scripts/contentscript.js"],
         "run_at": "document_end",
         "all_frames": false
       }
@@ -159,7 +159,7 @@
     "permissions": ["tabs", "http://*/*", "https://*/*"]
   },
   "contentSecurityPolicy": {
-    "content_security_policy": "<%=cspString%>"
+    "content_security_policy": "script-src 'self' 'unsafe-eval' https://example.com; object-src 'self'"
   },
   "devtoolsPage": {
     "minimum_chrome_version": "10.0",
@@ -167,8 +167,8 @@
   },
   "externallyConnectable": {
     "externally_connectable": {
-      "ids": ["<%=extConnAppID%>"],
-      "matches": ["<%=extConnMatches%>"],
+      "ids": ["Extension AppId"],
+      "matches": ["https://*.google.com/*", "*://*.chromium.org/*"],
       "accepts_tls_channel_id": false
     }
   },
@@ -176,26 +176,24 @@
     "file_browser_handlers": {
       "id": "upload",
       "default_title": "File browser",
-      "file_filters": [
-        "filesystem:*.*"
-      ]
+      "file_filters": ["filesystem:*.*"]
     },
     "icon": {
-      "16": "<%=icon16%>"
+      "16": "images/icon-16.png"
     },
     "permissions": ["fileBrowserHandler"]
   },
   "homepageUrl": {
-    "homepage_url": "<%=homepageURL%>"
+    "homepage_url": "http://www.homepage.com"
   },
   "import": {
-    "import": [{"id": "<%=importId%>"}]
+    "import": [{"id": "SHARED-MODULE-IMPORT-ID"}]
   },
   "incognito": {
     "incognito": "spanning"
   },
   "key": {
-    "key": "<%=key%>"
+    "key": "EXTENSION-UNIQ-KEY"
   },
   "kioskEnabled": {
     "kiosk_enabled": true
@@ -204,46 +202,46 @@
     "kiosk_only": true
   },
   "minimumChromeVersion": {
-    "minimum_chrome_version": "<%=minimumChromeVersion%>"
+    "minimum_chrome_version": 38
   },
   "naclModules": {
     "nacl_modules": [{
-      "path": "<%=naclPath%>",
-      "mime_type": "<%=naclMimeType%>"
+      "path": "path/naclmodule.nmf",
+      "mime_type": "application/html"
     }]
   },
   "oauth2": {
-    "client_id": "<%=oauth2ClientId%>",
-    "scopes": ["<%=oauth2Scope%>"]
+    "client_id": "OAUTH2-CLIENT-ID",
+    "scopes": ["OAUTH2-SCOPES"]
   },
   "offlineEnabled": {
     "offline_enabled": false
   },
   "omnibox": {
     "omnibox": {
-      "keyword": "<%=omniboxKeyword%>"
+      "keyword": "OMNIBOX-KEYWORD"
     },
     "icons": {
-      "16": "<%=icon16%>"
+      "16": "images/icon-16.png"
     }
   },
   "optionalPermissions": {
     "optional_permissions": ["tabs", "http://*.*"]
   },
   "optionsPage": {
-    "options_page": "<%=optionsPage%>"
+    "options_page": "options.html"
   },
   "optionsUi": {
     "options_ui": {
-      "page": "<%=optionsUIPage%>",
+      "page": "options-ui.html",
       "chrome_style": true
     }
   },
   "plugins": {
-    "plugins": [{"path": "<%=pluginPath%>"}]
+    "plugins": [{"path": "path/extension-plugin.dll"}]
   },
   "platforms": {
-    "platforms": "<%=platforms%>"
+    "platforms": "PLATFORMS"
   },
   "requirements": {
     "requirements": {
@@ -257,15 +255,15 @@
   },
   "sandbox": {
     "sandbox": {
-      "pages": ["<%=sandboxPage%>"]
+      "pages": ["sandbox.html"]
     },
     "content_security_policy": "sandbox allow-scripts;"
   },
   "shortName": {
-    "short_name": "<%=shortName%>"
+    "short_name": "SHORT-NAME-FOR-YOUR-APP"
   },
   "signature": {
-    "signature": "<%=signature%>"
+    "signature": "SIGNATURE"
   },
   "spellcheck": {
     "spellcheck": {
@@ -277,11 +275,11 @@
   },
   "storage": {
     "storage": {
-      "managed_schema": "<%=storageSchema%>"
+      "managed_schema": "path/storage-schema.json"
     }
   },
   "systemIndicator": {
-    "system_indicator": "<%=systemIndicator%>"
+    "system_indicator": "SYSTEM-INDICATOR"
   },
   "sockets": {
     "sockets": {
@@ -309,7 +307,7 @@
     "permissions": ["ttsEngine"]
   },
   "updateUrl": {
-    "update_url": "<%=updateUrl%>"
+    "update_url": "http://update.com/update-info.xml"
   },
   "urlHandlers": {
     "url_handlers": {
@@ -328,10 +326,16 @@
     }
   },
   "versionName": {
-    "version_name": "<%=versionName%>"
+    "version_name": "1.0 beta"
   },
   "webAccessibleResources": {
-    "web_accessible_resources": ["<%=webAccessibleResources%>"]
+    "web_accessible_resources": [
+      "images/*.png",
+      "style/double-rainbow.css",
+      "script/double-rainbow.js",
+      "script/main.js",
+      "templates/*"
+    ]
   },
   "fileSystem": {
     "permissions": [{"fileSystem": ["write", "retainEntries", "directory"]}]
@@ -340,22 +344,22 @@
     "permissions": [{"mediaGalleries": ["read", "delete", "copyTo", "allAutoDetected"]}]
   },
   "notifications": {
-    "web_accessible_resources": ["<%=icon48%>"],
+    "web_accessible_resources": ["images/icon-48.png"],
     "permissions": ["notifications"]
   },
   "contextMenus": {
     "icons": {
-      "16": "<%=icon16%>"
+      "16": "images/icon-16.png"
     }
   },
   "cookies": {
-    "permissions": ["cookies", "<%=cookiesURL%>"]
+    "permissions": ["cookies", "*://*.google.com"]
   },
   "declarativeWebRequest": {
-    "permissions": ["declarativeWebRequest", "<%=declarativeWebRequestURL%>"]
+    "permissions": ["declarativeWebRequest", "*://*/*"]
   },
   "webRequest": {
-    "permissions": ["webRequest", "<<%=webRequestURL%>"]
+    "permissions": ["webRequest", "*://*.google.com/"]
   },
   "webview": {
     "webview": {

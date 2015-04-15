@@ -103,3 +103,38 @@ it('should return overwritten value', function () {
   version = '1.2.2';
   assert.equal(manifest.prop('version'), '0.0.1');
 });
+
+it('should return overwritten value', function () {
+  // Query permissions by stable and platform_app(Chrome Apps)
+  var permissions = Manifest.queryPermissions({
+    channel: 'stable',
+    extensionTypes: ['platform_app']
+  });
+
+  // Query manifest fields by stable and extension
+  var fields = Manifest.queryManifest({
+    channel: 'stable',
+    extensionTypes: ['extension']
+  });
+
+  var manifest = Manifest.getManifest({
+    fields: Object.keys(fields),
+    permissions: Object.keys(permissions)
+  });
+
+  manifest.merge({
+    name: 'My Apps',
+    app: {
+      background: {
+        scripts: [
+          "scripts/background.js",
+          "scripts/addmore.js"
+        ]
+      }
+    }
+  });
+
+  assert.equal(manifest.manifest['name'], 'My Apps');
+  assert.equal(manifest.prop('app.background.scripts').length, 2);
+  assert.equal(manifest.prop('app.background.scripts.[1]'), 'scripts/addmore.js');
+});

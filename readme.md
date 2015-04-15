@@ -69,32 +69,22 @@ Generating manifest.json with basic sample configures
 
 ```js
 var Manifest = require('chrome-manifest');
-var metadata = require('chrome-manifest').Metadata;
 
 // Query permissions by stable and platform_app(Chrome Apps)
-var permissions = metadata.queryPermissions({
+var permissions = Manifest.queryPermissions({
   channel: 'stable',
   extensionTypes: ['platform_app']
 });
 
 // Query manifest fields by stable and extension
-var fields = metadata.queryManifest({
+var fields = Manifest.queryManifest({
   channel: 'stable',
   extensionTypes: ['extension']
 });
 
-// Get basic template data
-var templateData = metadata.getTemplateData();
-
-templateData.backgroundJS = 'background.js',
-templateData.icon16 = 'icon/icon-16.png',
-templateData.icon48 = 'icon/icon-48.png',
-templateData.icon128 = 'icon/icon-128.png'
-
-var manifest = metadata.getManifest({
+var manifest = Manifest.getManifest({
   fields: Object.keys(fields),
   permissions: Object.keys(permissions),
-  templateData: templateData
 });
 ```
 
