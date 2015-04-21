@@ -21,6 +21,7 @@ var manifest = new Manifest('manifest.json');
 // exclude value or key what you want
 manifest.exclude([
   {
+    // you can use string array expression to access array property
     'content_scripts.[0].matches': [
       "http://*/*"
     ]
@@ -36,15 +37,11 @@ manifest.exclude([
 ]);
 
 // get/set
-manifest.prop('content_scripts.[0].matches').length;
-manifest.prop('background.scripts');
-manifest.val('content_scripts.[0].matches.[0]');
-var bgscript = manifest.manifest.background.scripts[1];
-manifest.prop('manifest_version');
-manifest.manifest['key'];
-
-// Save manifest with updated content
-manifest.save('manifest.copy.json');
+console.log(manifest.content_scripts.[0].matches.length);
+console.log(manifest.content_scripts.[0]);
+console.log(manifest.background.scripts);
+console.log(manifest.manifest_version);
+console.log(manifest.manifest['key']);
 
 // patch version from 0.0.1 to 0.0.2
 manifest.patch();
@@ -53,9 +50,6 @@ manifest.patch();
 console.log(manifest.toJSON());
 console.log(manifest.toBuffer());
 console.log(manifest.toString());
-
-// Get value with dot expression and array expression
-console.log(manifest.get('background.scripts.[0]'));
 ```
 
 ```sh
@@ -71,21 +65,42 @@ Generating manifest.json with basic sample configures
 var Manifest = require('chrome-manifest');
 
 // Query permissions by stable and platform_app(Chrome Apps)
-var permissions = Manifest.queryPermissions({
-  channel: 'stable',
-  extensionTypes: ['platform_app']
+var metadata = new Manifest.queryMetadata({
+    channel: 'stable',
+    extensionTypes: ['platform_app']
+  });
+
+// Create a manifest with selected fields and permissions of Chrome Manifest
+var manifest = new Manifest({
+  fields: Object.keys(metadata.fields),
+  permissions: Object.keys(metadata.permissions)
 });
 
-// Query manifest fields by stable and extension
-var fields = Manifest.queryManifest({
-  channel: 'stable',
-  extensionTypes: ['extension']
+// Merge with new value
+manifest.merge({
+  name: 'My Apps',
+  author: 'New Author',
+  app: {
+    background: {
+      scripts: [
+        "scripts/background.js",
+        "scripts/addmore.js"
+      ]
+    }
+  },
+  permissions: [
+    'tabs',
+    'http://*/**',
+    'https://*/**',
+    'test permissions'
+  ]
 });
 
-var manifest = Manifest.getManifest({
-  fields: Object.keys(fields),
-  permissions: Object.keys(permissions),
-});
+assert.equal(manifest.name, 'My Apps');
+assert.equal(manifest.author, 'New Author');
+assert.equal(manifest.app.background.scripts.length, 2);
+assert.equal(manifest.app.background.scripts[1], 'scripts/addmore.js');
+assert(manifest.permissions.indexOf('test permissions') >= 0);
 ```
 
 ## License
