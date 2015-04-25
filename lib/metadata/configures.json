@@ -32,7 +32,7 @@
      }
   },
   "bluetooth": {
-    "uuids": ["bluetooh-uuid"],
+    "uuids": ["bluetooth-uuid"],
     "socket": true,
     "low_energy": true
   },
