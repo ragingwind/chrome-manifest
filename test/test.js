@@ -128,3 +128,27 @@ it('should returns merged value', function () {
   assert.equal(manifest.app.background.scripts[1], 'scripts/addmore.js');
   assert(manifest.permissions.indexOf('test permissions') >= 0);
 });
+
+it('should return sorted manifest', function () {
+  var manifest = new Manifest({
+    'background': '',
+    'icons': {
+      '16': 'images/icon-16.png',
+      '128': 'images/icon-128.png'
+    },
+    'app': {
+      'background': {
+        'scripts': [
+          'scripts/main.js',
+          'scripts/chromereload.js'
+        ]
+      }
+    }
+  });
+
+  var prop = Object.keys(manifest.toJSON());
+  assert.equal(prop[0], 'app');
+  assert.equal(prop[1], 'background');
+  assert.equal(prop[2], 'icons');
+});
+
