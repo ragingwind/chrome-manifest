@@ -9,7 +9,6 @@
 $ npm install --save chrome-manifest
 ```
 
-
 ## Usage
 
 ### Manifest
@@ -50,11 +49,6 @@ manifest.patch();
 console.log(manifest.toJSON());
 console.log(manifest.toBuffer());
 console.log(manifest.toString());
-```
-
-```sh
-$ npm install --global chrome-manifest
-$ chrome-manifest --help
 ```
 
 ### Metadata
