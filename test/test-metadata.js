@@ -20,7 +20,7 @@ function hasValue(src, dest) {
   return ret;
 }
 
-it('should return permissions included channel and types', function () {
+it('should returns permissions included channel and types', function () {
   var opts = {
     channel: 'stable',
     extensionTypes: ['platform_app']
@@ -33,7 +33,7 @@ it('should return permissions included channel and types', function () {
   });
 });
 
-it('should return permissions included dev channel', function () {
+it('should returns permissions included dev channel', function () {
   var opts = {
     channel: 'dev'
   };
@@ -46,7 +46,7 @@ it('should return permissions included dev channel', function () {
   });
 });
 
-it('should return manifest for extension and stable', function () {
+it('should returns manifest for extension and stable', function () {
   var opts = {
     channel: 'stable',
     extensionTypes: ['extension']
@@ -61,7 +61,7 @@ it('should return manifest for extension and stable', function () {
   });
 });
 
-it('should return manifest', function () {
+it('should returns manifest', function () {
   var manifest = Metadata.getManifest({
     fields: [
       'about_page',
@@ -90,7 +90,7 @@ it('should return manifest', function () {
   assert(manifest.web_accessible_resources);
 });
 
-it('should return manifest with content_security_policy merging policies', function () {
+it('should returns manifest with content_security_policy merging policies', function () {
   var manifest = Metadata.getManifest({
     fields: [
       'sandbox',
@@ -102,7 +102,7 @@ it('should return manifest with content_security_policy merging policies', funct
   assert(manifest.content_security_policy.indexOf('\'unsafe-eval\' https://example.com; object-src \'self\'') >= 0);
 });
 
-it('should return manifest having converting template data', function () {
+it('should returns manifest having converting template data', function () {
   var manifest = Metadata.getManifest({
     fields: [
       'background-scripts',
@@ -120,7 +120,7 @@ it('should return manifest having converting template data', function () {
 });
 
 
-it('should return manifest having converting template data by tweaked', function () {
+it('should returns manifest having converting template data by tweaked', function () {
   var manifest = Metadata.getManifest({
     fields: [
       'background-scripts',
