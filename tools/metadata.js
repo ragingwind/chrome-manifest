@@ -15,15 +15,16 @@ var minify = require('node-json-minify');
 var meow = require('meow');
 var inquirer = require('inquirer');
 var next = require('next-promise');
+var prefilter = require('./filter');
 
 var args = meow({
   pkg: '../package.json',
   help: [
       'Usage',
-      '   diff_metadata.js --output ./lib/metadata',
+      '   node metadata.js --output=./lib/metadata',
       '',
       'Options',
-      '   --output: Output path, If it is not given, will be using default path'
+      '   --output: Output path, If it is not given, will be use default path'
   ].join('\n')
 }, {
   default: {
@@ -31,63 +32,14 @@ var args = meow({
   }
 });
 
-// Add missing, custrom manifest property
-function filterManifest(manifest) {
-  // background.page for extensions
-  manifest['backabout_page'] =  {
-    'channel': 'stable',
-    'extension_types': ['extensions']
-  }
-
-  // background.script for extensions
-  manifest['backabout_scripts'] =  {
-    'channel': 'stable',
-    'extension_types': ['extensions']
-  }
-
-  manifest['kiosk_enabled'] = {
-    'channel': 'stable',
-    'extension_types': ['platform_app']
-  }
-
-  manifest['kiosk_only'] = {
-    'channel': 'stable',
-    'extension_types': ['platform_app']
-  }
-
-  return manifest;
-}
-
-function filterPermission(permission) {
-  var removeFields = [
-    "accessibilityPrivate",
-    "mediaGalleries.allAutoDetected",
-    "mediaGalleries.scan",
-    "mediaGalleries.read",
-    "mediaGalleries.copyTo",
-    "mediaGalleries.delete",
-    "fileSystem.directory",
-    "fileSystem.retainEntries",
-    "fileSystem.write"
-  ];
-
-  removeFields.forEach(function (r) {
-    if (permission[r]) {
-      delete permission[r];
-    }
-  });
-
-  return permission;
-}
-
 var features = [{
   url: 'http://src.chromium.org/svn/trunk/src/chrome/common/extensions/api/_manifest_features.json',
   output: path.join(args.flags.output, 'manifest_features.json'),
-  prefilter: filterManifest
+  prefilter: prefilter.manifest
 }, {
   url: 'http://src.chromium.org/svn/trunk/src/chrome/common/extensions/api/_permission_features.json',
   output: path.join(args.flags.output, 'permission_features.json'),
-  prefilter: filterPermission
+  prefilter: prefilter.permission
 }];
 
 function diff(src, dest) {
