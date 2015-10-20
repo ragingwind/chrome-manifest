@@ -136,3 +136,27 @@ it('should returns manifest having converting template data by tweaked', functio
   assert.equal(manifest.icons['128'], 'images/icon-128.png');
   assert.equal(manifest.background.scripts[0], 'scripts/background.js');
 });
+
+
+it('should returns permissions dedicated chrome only', function () {
+  var permissions = [
+    'audioModem',
+    'dns',
+    'documentScan',
+    'networking.config',
+    'platformKeys',
+    'power',
+    'printerProvider',
+    'storage',
+    'vpnProvider'
+  ];
+
+  var manifest = Metadata.getManifest({
+    permissions: permissions
+  });
+
+  assert.equal(manifest.permissions.length, 9);
+  manifest.permissions.forEach(function (p) {
+    assert(permissions.indexOf(p) !== -1);
+  });
+});

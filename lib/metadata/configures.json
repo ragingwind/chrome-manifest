@@ -273,11 +273,6 @@
       "dictionary_path": "testEnglish.bdic"
     }
   },
-  "storage": {
-    "storage": {
-      "managed_schema": "path/storage-schema.json"
-    }
-  },
   "systemIndicator": {
     "system_indicator": "SYSTEM-INDICATOR"
   },
