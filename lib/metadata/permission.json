@@ -99,8 +99,7 @@
       "legacy_packaged_app",
       "hosted_app",
       "platform_app"
-    ],
-    "primary": true
+    ]
   },
   "bluetoothPrivate": {
     "channel": "stable",
@@ -125,8 +124,7 @@
     "extension_types": [
       "extension",
       "legacy_packaged_app"
-    ],
-    "primary": true
+    ]
   },
   "brailleDisplayPrivate": {
     "channel": "stable",
@@ -188,8 +186,7 @@
       "legacy_packaged_app",
       "hosted_app",
       "platform_app"
-    ],
-    "primary": true
+    ]
   },
   "clipboardWrite": {
     "channel": "stable",
@@ -198,8 +195,7 @@
       "legacy_packaged_app",
       "hosted_app",
       "platform_app"
-    ],
-    "primary": true
+    ]
   },
   "cloudPrintPrivate": {
     "channel": "stable",
@@ -222,8 +218,7 @@
     "extension_types": [
       "extension",
       "legacy_packaged_app"
-    ],
-    "primary": true
+    ]
   },
   "contextMenus": {
     "channel": "stable",
@@ -231,16 +226,14 @@
       "extension",
       "legacy_packaged_app",
       "platform_app"
-    ],
-    "primary": true
+    ]
   },
   "cookies": {
     "channel": "stable",
     "extension_types": [
       "extension",
       "legacy_packaged_app"
-    ],
-    "primary": true
+    ]
   },
   "copresence": {
     "channel": "dev, stable",
@@ -268,8 +261,7 @@
       "extension",
       "legacy_packaged_app",
       "platform_app"
-    ],
-    "primary": true
+    ]
   },
   "developerPrivate": {
     "channel": "stable",
@@ -461,8 +453,7 @@
     "extension_types": [
       "extension",
       "legacy_packaged_app"
-    ],
-    "primary": true
+    ]
   },
   "hotwordPrivate": {
     "channel": "stable",
@@ -503,8 +494,7 @@
       "extension",
       "legacy_packaged_app",
       "platform_app"
-    ],
-    "primary": true
+    ]
   },
   "infobars": {
     "channel": "dev",
@@ -577,8 +567,7 @@
       "legacy_packaged_app",
       "platform_app",
       "hosted_app"
-    ],
-    "primary": true
+    ]
   },
   "mediaGalleries": {
     "channel": "stable",
@@ -659,8 +648,7 @@
       "legacy_packaged_app",
       "hosted_app",
       "platform_app"
-    ],
-    "primary": true
+    ]
   },
   "echoPrivate": {
     "channel": "stable",
@@ -678,8 +666,7 @@
     "extension_types": [
       "extension",
       "legacy_packaged_app"
-    ],
-    "primary": true
+    ]
   },
   "pointerLock": {
     "channel": "stable",
@@ -865,8 +852,7 @@
       "extension",
       "legacy_packaged_app",
       "platform_app"
-    ],
-    "primary": true
+    ]
   },
   "tabCapture": {
     "channel": "stable",
@@ -891,8 +877,7 @@
     "extension_types": [
       "extension",
       "legacy_packaged_app"
-    ],
-    "primary": true
+    ]
   },
   "tts": {
     "channel": "stable",
@@ -950,8 +935,7 @@
     "extension_types": [
       "extension",
       "legacy_packaged_app"
-    ],
-    "primary": true
+    ]
   },
   "webrtcAudioPrivate": {
     "channel": "stable",
@@ -978,16 +962,14 @@
     "extension_types": [
       "extension",
       "legacy_packaged_app"
-    ],
-    "primary": true
+    ]
   },
   "webRequestBlocking": {
     "channel": "stable",
     "extension_types": [
       "extension",
       "legacy_packaged_app"
-    ],
-    "primary": true
+    ]
   },
   "webview": {
     "channel": "stable",
@@ -1048,8 +1030,7 @@
       "platform_app",
       "chromeos",
       "extension"
-    ],
-    "primary": true
+    ]
   },
   "vpnProvider": {
     "channel": "stable",

@@ -58,29 +58,6 @@ var chromeDedicatedPermissions = {
   }
 };
 
-// Permissions listed on document
-var chromePrimaryPermissions = [
-  'background',
-  'bookmarks',
-  'clipboardRead',
-  'clipboardWrite',
-  'contentSettings',
-  'contextMenus',
-  'cookies',
-  'debugger',
-  'history',
-  'idle',
-  'management',
-  'notifications',
-  'pageCapture',
-  'tabs',
-  'topSites',
-  'storage',
-  'webNavigation',
-  'webRequest',
-  'webRequestBlocking'
-];
-
 // Ignored permmisions used as subset
 var ignoredPermissions = [
   "accessibilityPrivate",
@@ -114,7 +91,6 @@ var chromeDedicatedManifest = {
   }
 };
 
-
 // Add missing, custrom manifest property
 function filterManifest(manifest) {
   Object.keys(chromeDedicatedManifest).forEach(function (p) {
@@ -134,12 +110,6 @@ function filterPermission(permission) {
 
   Object.keys(chromeDedicatedPermissions).forEach(function (p) {
     permission[p] = chromeDedicatedPermissions[p];
-  });
-
-  chromePrimaryPermissions.forEach(function (p) {
-    if (permission[p]) {
-      permission[p].primary = true;
-    }
   });
 
   return permission;
