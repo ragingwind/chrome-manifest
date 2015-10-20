@@ -15,7 +15,7 @@ var minify = require('node-json-minify');
 var meow = require('meow');
 var inquirer = require('inquirer');
 var next = require('next-promise');
-var prefilter = require('./filter');
+var prefilter = require('./prefilter');
 
 var args = meow({
   pkg: '../package.json',
