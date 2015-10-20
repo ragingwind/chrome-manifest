@@ -34,11 +34,11 @@ var args = meow({
 
 var features = [{
   url: 'http://src.chromium.org/svn/trunk/src/chrome/common/extensions/api/_manifest_features.json',
-  output: path.join(args.flags.output, 'manifest_features.json'),
+  output: path.join(args.flags.output, 'manifest.json'),
   prefilter: prefilter.manifest
 }, {
   url: 'http://src.chromium.org/svn/trunk/src/chrome/common/extensions/api/_permission_features.json',
-  output: path.join(args.flags.output, 'permission_features.json'),
+  output: path.join(args.flags.output, 'permission.json'),
   prefilter: prefilter.permission
 }];
 
