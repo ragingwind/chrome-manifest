@@ -228,9 +228,6 @@
   "optionalPermissions": {
     "optional_permissions": ["tabs", "http://*.*"]
   },
-  "optionsPage": {
-    "options_page": "options.html"
-  },
   "optionsUi": {
     "options_ui": {
       "page": "options-ui.html",
