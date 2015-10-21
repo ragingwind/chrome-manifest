@@ -160,3 +160,44 @@ it('should returns permissions dedicated chrome only', function () {
     assert(permissions.indexOf(p) !== -1);
   });
 });
+
+it('should returns valid chrome permissions', function () {
+  var permissions = [
+    'hostPermissions',
+    'background',
+    'bookmarks',
+    'clipboardRead',
+    'clipboardWrite',
+    'contentSettings',
+    'contextMenus',
+    'cookies',
+    'debugger',
+    'history',
+    'idle',
+    'management',
+    'notifications',
+    'pageCapture',
+    'tabs',
+    'topSites',
+    'webNavigation',
+    'webRequest',
+    'webRequestBlocking',
+  ];
+
+  var manifest = Metadata.getManifest({
+    permissions: permissions
+  });
+
+
+  permissions.shift();
+  permissions.unshift(
+    'http://*/*',
+    'https://*/*',
+    '*://*.google.com'
+  );
+
+  assert.equal(manifest.permissions.length, 20);
+  manifest.permissions.forEach(function (p) {
+    assert(permissions.indexOf(p) !== -1);
+  });
+});
