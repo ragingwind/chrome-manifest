@@ -10,8 +10,7 @@
   "license": "MIT",
   "main": "lib/manifest",
   "files": [
-    "lib",
-    "test"
+    "lib"
   ],
   "keywords": [
     "chrome manifest",
