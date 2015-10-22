@@ -59,10 +59,10 @@ Generating manifest.json with basic sample configures
 var Manifest = require('chrome-manifest');
 
 // Query permissions by stable and platform_app(Chrome Apps)
-var metadata = new Manifest.queryMetadata({
-    channel: 'stable',
-    extensionTypes: ['platform_app']
-  });
+var metadata = Manifest.queryMetadata({
+  channel: 'stable',
+  extensionTypes: ['platform_app']
+});
 
 // Create a manifest with selected fields and permissions of Chrome Manifest
 var manifest = new Manifest({
