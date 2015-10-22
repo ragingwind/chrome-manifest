@@ -28,7 +28,7 @@
          "38": "images/icon-38.png"
        },
        "default_title": "Default Title",
-       "default_popup": "Default Popup"
+       "default_popup": "popup.html"
      }
   },
   "bluetooth": {
@@ -92,7 +92,7 @@
         "38": "images/icon-38.png"
       },
       "default_title": "Default Title",
-      "default_popup": "Default Popup"
+      "default_popup": "popup.html"
     }
   },
   "chromeSettingsOverrides": {
@@ -228,9 +228,9 @@
   "optionalPermissions": {
     "optional_permissions": ["tabs", "http://*.*"]
   },
-  "optionsUi": {
+  "optionsUI": {
     "options_ui": {
-      "page": "options-ui.html",
+      "page": "options.html",
       "chrome_style": true
     }
   },
