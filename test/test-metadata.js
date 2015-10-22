@@ -188,7 +188,6 @@ it('should returns valid chrome permissions', function () {
     permissions: permissions
   });
 
-
   permissions.shift();
   permissions.unshift(
     'http://*/*',
