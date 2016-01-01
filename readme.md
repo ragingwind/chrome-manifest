@@ -1,4 +1,4 @@
-#  [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-url]][daviddm-image]
+# chrome-manifest [![Build Status](https://travis-ci.org/ragingwind/bengbenge.svg?branch=master)](https://travis-ci.org/ragingwind/bengbenge)
 
 > Help you manage manifest when you are developing Chrome Apps and Extensions
 
@@ -100,11 +100,3 @@ assert(manifest.permissions.indexOf('test permissions') >= 0);
 ## License
 
 MIT ©[Jommy Moon](http://ragingwind.me)
-
-
-[npm-url]: https://npmjs.org/package/chrome-manifest
-[npm-image]: https://badge.fury.io/js/chrome-manifest.svg
-[travis-url]: https://travis-ci.org/ragingwind/chrome-manifest
-[travis-image]: https://travis-ci.org/ragingwind/chrome-manifest.svg?branch=master
-[daviddm-url]: https://david-dm.org/ragingwind/chrome-manifest.svg?theme=shields.io
-[daviddm-image]: https://david-dm.org/ragingwind/chrome-manifest
