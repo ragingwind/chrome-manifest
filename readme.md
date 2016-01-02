@@ -1,4 +1,4 @@
-# chrome-manifest [![Build Status](https://travis-ci.org/ragingwind/bengbenge.svg?branch=master)](https://travis-ci.org/ragingwind/bengbenge)
+# chrome-manifest [![Build Status](https://travis-ci.org/ragingwind/chrome-manifest.svg?branch=master)](https://travis-ci.org/ragingwind/chrome-manifest)
 
 > Help you manage manifest when you are developing Chrome Apps and Extensions
 
