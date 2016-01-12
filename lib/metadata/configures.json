@@ -345,13 +345,13 @@
     }
   },
   "cookies": {
-    "permissions": ["cookies", "*://*.google.com"]
+    "permissions": ["cookies", "*://*.google.com/"]
   },
   "declarativeWebRequest": {
     "permissions": ["declarativeWebRequest", "*://*/*"]
   },
   "webRequest": {
-    "permissions": ["webRequest", "*://*.google.com"]
+    "permissions": ["webRequest", "*://*.google.com/"]
   },
   "webview": {
     "webview": {
