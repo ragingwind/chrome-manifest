@@ -185,7 +185,7 @@ test('should returns valid chrome permissions', t => {
 	permissions.unshift(
 		'http://*/*',
 		'https://*/*',
-		'*://*.google.com'
+		'*://*.google.com/'
 	);
 
 	t.is(manifest.permissions.length, 20);
