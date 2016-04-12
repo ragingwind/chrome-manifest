@@ -99,4 +99,4 @@ assert(manifest.permissions.indexOf('test permissions') >= 0);
 
 ## License
 
-MIT ©[Jommy Moon](http://ragingwind.me)
+MIT ©[Jimmy Moon](http://ragingwind.me)
