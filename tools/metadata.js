@@ -2,12 +2,6 @@
 
 var path = require('path');
 var fs = require('fs');
-var read = fs.readFileSync;
-var exist = fs.existsSync;
-var write = function (output, data) {
-	console.log(path.basename(output), 'is writing');
-	fs.writeFileSync(output, data);
-};
 var _ = require('lodash');
 var got = require('got');
 var q = require('q');
@@ -17,6 +11,12 @@ var inquirer = require('inquirer');
 var next = require('next-promise');
 var prefilter = require('./prefilter');
 
+var read = fs.readFileSync;
+var exist = fs.existsSync;
+var write = function (output, data) {
+	console.log(path.basename(output), 'is writing');
+	fs.writeFileSync(output, data);
+};
 var args = meow({
 	pkg: '../package.json',
 	help: [

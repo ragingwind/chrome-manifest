@@ -24,7 +24,7 @@ test('should returns permissions included channel and types', t => {
 
 	Object.keys(perms).forEach(function (key) {
 		var perm = perms[key];
-		t.ok(perm.channel.indexOf(opts.channel) >= 0 && hasValue(perm.extension_types, opts.extensionTypes));
+		t.true(perm.channel.indexOf(opts.channel) >= 0 && hasValue(perm.extension_types, opts.extensionTypes));
 	});
 });
 
@@ -37,7 +37,7 @@ test('should returns permissions included dev channel', t => {
 
 	Object.keys(perms).forEach(function (key) {
 		var perm = perms[key];
-		t.ok(perm.channel.indexOf(opts.channel) >= 0);
+		t.true(perm.channel.indexOf(opts.channel) >= 0);
 	});
 });
 
@@ -51,7 +51,7 @@ test('should returns manifest for extension and stable', t => {
 
 	Object.keys(perms).forEach(function (key) {
 		var perm = perms[key];
-		t.ok(perm.channel.indexOf(opts.channel) >= 0 &&
+		t.true(perm.channel.indexOf(opts.channel) >= 0 &&
 					(perm.extension_types === 'all' || hasValue(perm.extension_types, opts.extensionTypes)));
 	});
 });
@@ -76,13 +76,13 @@ test('should returns manifest', t => {
 	});
 
 	t.is(manifest.permissions.length, 7);
-	t.ok(manifest.about_page);
-	t.ok(manifest.manifest_version);
-	t.ok(manifest.icons && manifest.icons['16'] &&
+	t.true(manifest.about_page);
+	t.true(manifest.manifest_version);
+	t.true(manifest.icons && manifest.icons['16'] &&
 					manifest.icons['48'] && manifest.icons['128']);
-	t.ok(manifest.content_scripts);
-	t.ok(manifest.tts_engine);
-	t.ok(manifest.web_accessible_resources);
+	t.true(manifest.content_scripts);
+	t.true(manifest.tts_engine);
+	t.true(manifest.web_accessible_resources);
 });
 
 test('should returns manifest with content_security_policy merging policies', t => {
@@ -93,8 +93,8 @@ test('should returns manifest with content_security_policy merging policies', t 
 		]
 	});
 
-	t.ok(manifest.content_security_policy.indexOf('sandbox allow-scripts;') >= 0);
-	t.ok(manifest.content_security_policy.indexOf('\'unsafe-eval\' https://example.com; object-src \'self\'') >= 0);
+	t.true(manifest.content_security_policy.indexOf('sandbox allow-scripts;') >= 0);
+	t.true(manifest.content_security_policy.indexOf('\'unsafe-eval\' https://example.com; object-src \'self\'') >= 0);
 });
 
 test('should returns manifest having converting template data', t => {
@@ -150,7 +150,7 @@ test('should returns permissions dedicated chrome only', t => {
 
 	t.is(manifest.permissions.length, 9);
 	manifest.permissions.forEach(function (p) {
-		t.ok(permissions.indexOf(p) !== -1);
+		t.true(permissions.indexOf(p) !== -1);
 	});
 });
 
@@ -190,6 +190,6 @@ test('should returns valid chrome permissions', t => {
 
 	t.is(manifest.permissions.length, 20);
 	manifest.permissions.forEach(function (p) {
-		t.ok(permissions.indexOf(p) !== -1);
+		t.true(permissions.indexOf(p) !== -1);
 	});
 });

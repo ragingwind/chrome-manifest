@@ -1,16 +1,16 @@
 'use strict';
 
+import fs from 'fs';
 import test from 'ava';
 import Manifest from '../lib/manifest';
-import fs from 'fs';
 
 test('should returns valid manifest data', t => {
 	var manifest = new Manifest('fixtures/manifest.json');
 
-	t.ok(manifest.name === 'Chrome Manifest', 'Names must be same');
-	t.ok(/Chrome Manifest/gi.test(manifest.toString()), 'Names must be same');
-	t.ok(manifest.toBuffer().toString() === manifest.toString(), 'String must be same');
-	t.ok(manifest.toString(), fs.readFileSync('fixtures/manifest.json'));
+	t.true(manifest.name === 'Chrome Manifest', 'Names must be same');
+	t.true(/Chrome Manifest/gi.test(manifest.toString()), 'Names must be same');
+	t.true(manifest.toBuffer().toString() === manifest.toString(), 'String must be same');
+	t.true(manifest.toString(), fs.readFileSync('fixtures/manifest.json'));
 });
 
 test('should returns manifest data same as it passed', t => {
@@ -123,5 +123,5 @@ test('should returns merged value', t => {
 	t.is(manifest.author, 'New Author');
 	t.is(manifest.app.background.scripts.length, 2);
 	t.is(manifest.app.background.scripts[1], 'scripts/addmore.js');
-	t.ok(manifest.permissions.indexOf('test permissions') >= 0);
+	t.true(manifest.permissions.indexOf('test permissions') >= 0);
 });
