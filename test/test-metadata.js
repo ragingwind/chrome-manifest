@@ -76,13 +76,13 @@ test('should returns manifest', t => {
 	});
 
 	t.is(manifest.permissions.length, 7);
-	t.true(manifest.about_page);
-	t.true(manifest.manifest_version);
-	t.true(manifest.icons && manifest.icons['16'] &&
+	t.truthy(manifest.about_page);
+	t.truthy(manifest.manifest_version);
+	t.truthy(manifest.icons && manifest.icons['16'] &&
 					manifest.icons['48'] && manifest.icons['128']);
-	t.true(manifest.content_scripts);
-	t.true(manifest.tts_engine);
-	t.true(manifest.web_accessible_resources);
+	t.truthy(manifest.content_scripts);
+	t.truthy(manifest.tts_engine);
+	t.truthy(manifest.web_accessible_resources);
 });
 
 test('should returns manifest with content_security_policy merging policies', t => {

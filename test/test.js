@@ -10,7 +10,7 @@ test('should returns valid manifest data', t => {
 	t.true(manifest.name === 'Chrome Manifest', 'Names must be same');
 	t.true(/Chrome Manifest/gi.test(manifest.toString()), 'Names must be same');
 	t.true(manifest.toBuffer().toString() === manifest.toString(), 'String must be same');
-	t.true(manifest.toString(), fs.readFileSync('fixtures/manifest.json'));
+	t.truthy(manifest.toString(), fs.readFileSync('fixtures/manifest.json'));
 });
 
 test('should returns manifest data same as it passed', t => {
